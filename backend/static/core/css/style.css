@@ -1,4 +1,4 @@
-/* GENERAL */
+/* general */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -11,7 +11,7 @@ body {
     line-height: 1.6;
 }
 
-/* ANIMATIONS */
+/* animations */
 .fade-in {
     animation: fadeIn 1s ease-in-out forwards;
 }
@@ -27,7 +27,7 @@ body {
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-/* HEADER */
+/* header */
 header {
     background: #0f3d2e;
     color: white;
@@ -54,7 +54,7 @@ nav a {
     border-radius: 5px;
 }
 
-/* HERO */
+/* hero */
 .hero {
     text-align: center;
     padding: 40px 20px;
@@ -69,7 +69,7 @@ nav a {
     color: #555;
 }
 
-/* BANK TRANSFER SECTION */
+/* bank transfer section */
 .bank-transfer-section {
     max-width: 1000px;
     margin: auto;
@@ -107,7 +107,7 @@ nav a {
     color: #555;
 }
 
-/* DONATION FORM SECTION */
+/* donation form */
 .donation-section {
     max-width: 900px;
     margin: auto;
@@ -121,7 +121,7 @@ nav a {
     box-shadow: 0 0 10px rgba(0,0,0,0.05);
 }
 
-/* FORM STYLING */
+/* form styling */
 .form-group {
     position: relative;
     margin-bottom: 20px;
@@ -173,7 +173,7 @@ form button:hover {
     background: #145c44;
 }
 
-/* IMPACT SECTION */
+/* impact section */
 .impact-section {
     max-width: 900px;
     margin: auto;
@@ -198,7 +198,7 @@ form button:hover {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* FOOTER */
+/* footer */
 footer {
     background: #0f3d2e;
     color: white;
@@ -213,7 +213,7 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* LOADER */
+/* loader */
 .hidden {
     display: none;
     margin-top: 15px;
@@ -221,7 +221,7 @@ footer a:hover {
     font-weight: bold;
 }
 
-/* RESPONSIVE */
+/* responsive*/
 @media (max-width: 768px) {
     header {
         flex-direction: column;

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,11 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donate | Ceylon Baithulmal Fund</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <script src="{% static 'core/js/donate.js' %}"></script>
+
+
+
 </head>
 <body>
 
-<!-- HEADER -->
+<!-- header -->
 <header class="fade-in">
     <div class="logo">Ceylon Baithulmal Fund</div>
     <nav>
@@ -19,19 +24,20 @@
         <a href="#" class="hover-effect">Gallery</a>
         <a href="#" class="hover-effect">News</a>
         <a href="#" class="hover-effect">Contact</a>
-        <a class="donate-btn hover-effect" href="donate.html">Donate</a>
+        <a class="donate-btn hover-effect" href="{% url 'donate' %}">Donate</a>
     </nav>
 </header>
 
-<!-- HERO -->
+<!-- hero -->
 <section class="hero fade-in">
     <h1>Support a Noble Cause</h1>
     <p class="quote">
         “Whoever relieves a believer’s distress, Allah will relieve his distress.”<br>
-        - Prophet Muhammad </p>
+        - Prophet Muhammad
+    </p>
 </section>
 
-<!-- BANK TRANSFERS AS CARDS -->
+<!-- bank transfers as cards -->
 <section class="bank-transfer-section fade-in">
     <h2>Bank Transfers</h2>
     <div class="bank-cards">
@@ -40,11 +46,6 @@
             <h3>Hatton National Bank</h3>
             <p>Account: 123456789</p>
         </div>
-        <!-- <div class="bank-card hover-effect">
-            <div class="bank-logo">🏦</div>
-            <h3>Amana Bank</h3>
-            <p>Account: 987654321</p>
-        </div> -->
         <div class="bank-card hover-effect">
             <div class="bank-logo">🏦</div>
             <h3>Commercial Bank</h3>
@@ -63,52 +64,50 @@
     </div>
 </section>
 
-<!-- ONLINE DONATION FORM -->
+<!-- online donation forms -->
 <section class="donation-section fade-in">
     <h2>Online Donation</h2>
-    <!-- <div class="box hover-effect"> -->
-        <form id="donationForm">
-            <div class="form-group">
-                <input type="text" name="name" required placeholder=" ">
-                <label>Full Name</label>
-            </div>
-            <div class="form-group">
-                <input type="email" name="email" required placeholder=" ">
-                <label>Email</label>
-            </div>
-            <div class="form-group">
-                <input type="text" name="phone" required placeholder=" ">
-                <label>Phone Number</label>
-            </div>
-            <div class="form-group">
-                <select name="country" required>
-                    <option value="">Select Country</option>
-                    <option>Sri Lanka</option>
-                    <option>Saudi Arabia</option>
-                    <option>UAE</option>
-                    <option>UK</option>
-                    <option>USA</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <select name="amount" required>
-                    <option value="">Select Amount</option>
-                    <option value="50">USD 50</option>
-                    <option value="100">USD 100</option>
-                    <option value="250">USD 250</option>
-                    <option value="500">USD 500</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <textarea name="message" placeholder="Special Instructions (optional)"></textarea>
-            </div>
-            <button type="submit" class="hover-effect">Proceed to Pay</button>
-        </form>
-        <div id="loader" class="hidden">Redirecting to payment...</div>
-    </div>
+    <form id="donationForm">
+        <div class="form-group">
+            <input type="text" name="name" required placeholder=" ">
+            <label>Full Name</label>
+        </div>
+        <div class="form-group">
+            <input type="email" name="email" required placeholder=" ">
+            <label>Email</label>
+        </div>
+        <div class="form-group">
+            <input type="text" name="phone" required placeholder=" ">
+            <label>Phone Number</label>
+        </div>
+        <div class="form-group">
+            <select name="country" required>
+                <option value="">Select Country</option>
+                <option>Sri Lanka</option>
+                <option>Saudi Arabia</option>
+                <option>UAE</option>
+                <option>UK</option>
+                <option>USA</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <select name="amount" required>
+                <option value="">Select Amount</option>
+                <option value="50">USD 50</option>
+                <option value="100">USD 100</option>
+                <option value="250">USD 250</option>
+                <option value="500">USD 500</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <textarea name="message" placeholder="Special Instructions (optional)"></textarea>
+        </div>
+        <button type="submit" class="hover-effect">Proceed to Pay</button>
+    </form>
+    <div id="loader" class="hidden"></div>
 </section>
 
-<!-- IMPACT / TESTIMONIALS -->
+<!--impact-->
 <section class="impact-section fade-in">
     <h2>Our Impact</h2>
     <div class="impact-cards">
@@ -127,7 +126,7 @@
     </div>
 </section>
 
-<!-- FOOTER -->
+<!-- footer -->
 <footer class="fade-in">
     <p>📍 Colombo, Sri Lanka</p>
     <p>📧 info@baithulmal.lk | ☎ +94 11 123 4567</p>
@@ -142,19 +141,11 @@
     </p>
 </footer>
 
-<script>
-document.getElementById('donationForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    const loader = document.getElementById('loader');
-    loader.classList.remove('hidden');
-    loader.innerText = "Redirecting to payment...";
-    setTimeout(() => {
-        loader.innerText = "Thank you for your donation! 😊";
-        this.reset();
-    }, 2000);
-});
-</script>
+<!-- Hidden WebXPay form -->
 <form id="webxpayForm" method="POST" style="display:none;"></form>
+
+<!-- WebXPay Integration Script -->
+<script src="{% static 'core/js/donate.js' %}"></script>
 
 </body>
 </html>
