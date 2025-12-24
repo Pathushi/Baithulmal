@@ -68,8 +68,8 @@ def create_payment(request):
             status="Pending",
         )
 
-        # Encrypt payment parameter using RSA public key
-        encrypted_payment = encrypt_payment(str(payment.transaction_id), str(amount))
+        # Force the amount to have 2 decimal places (e.g., "50.00" instead of "50")
+        encrypted_payment = encrypt_payment(str(payment.transaction_id), f"{amount:.2f}")
 
         # Build params according to WebXPay documentation
         params = {
