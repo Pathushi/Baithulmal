@@ -7,70 +7,32 @@
     <title>Donate | Ceylon Baithulmal Fund</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
-    <script src="{% static 'core/js/donate.js' %}"></script>
-
-
-
 </head>
 <body>
 
-<!-- header -->
 <header class="fade-in">
     <div class="logo">Ceylon Baithulmal Fund</div>
     <nav>
-        <a href="#" class="hover-effect">Home</a>
-        <a href="#" class="hover-effect">About Us</a>
-        <a href="#" class="hover-effect">Projects</a>
-        <a href="#" class="hover-effect">Gallery</a>
-        <a href="#" class="hover-effect">News</a>
-        <a href="#" class="hover-effect">Contact</a>
-        <a class="donate-btn hover-effect" href="{% url 'donate' %}">Donate</a>
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Projects</a>
+        <a href="#">Gallery</a>
+        <a href="#">News</a>
+        <a href="#">Contact</a>
+        <a class="donate-btn" href="{% url 'donate' %}">Donate</a>
     </nav>
 </header>
 
-<!-- hero -->
-<section class="hero fade-in">
-    <h1>Support a Noble Cause</h1>
-    <p class="quote">
-        “Whoever relieves a believer’s distress, Allah will relieve his distress.”<br>
-        - Prophet Muhammad
-    </p>
-</section>
-
-<!-- bank transfers as cards -->
-<section class="bank-transfer-section fade-in">
-    <h2>Bank Transfers</h2>
-    <div class="bank-cards">
-        <div class="bank-card hover-effect">
-            <div class="bank-logo">🏦</div>
-            <h3>Hatton National Bank</h3>
-            <p>Account: 123456789</p>
-        </div>
-        <div class="bank-card hover-effect">
-            <div class="bank-logo">🏦</div>
-            <h3>Commercial Bank</h3>
-            <p>Account: 456789123</p>
-        </div>
-        <div class="bank-card hover-effect">
-            <div class="bank-logo">🏦</div>
-            <h3>Bank of Ceylon</h3>
-            <p>Account: 112233445</p>
-        </div>
-        <div class="bank-card hover-effect">
-            <div class="bank-logo">🏦</div>
-            <h3>NDB</h3>
-            <p>Account: 998877665</p>
-        </div>
-    </div>
-</section>
-
-<!-- online donation forms -->
 <section class="donation-section fade-in">
     <h2>Online Donation</h2>
     <form id="donationForm">
         <div class="form-group">
-            <input type="text" name="name" required placeholder=" ">
-            <label>Full Name</label>
+            <input type="text" name="first_name" required placeholder=" ">
+            <label>First Name</label>
+        </div>
+        <div class="form-group">
+            <input type="text" name="last_name" required placeholder=" ">
+            <label>Last Name</label>
         </div>
         <div class="form-group">
             <input type="email" name="email" required placeholder=" ">
@@ -78,7 +40,27 @@
         </div>
         <div class="form-group">
             <input type="text" name="phone" required placeholder=" ">
-            <label>Phone Number</label>
+            <label>Phone Number (+94XXXXXXXXX)</label>
+        </div>
+        <div class="form-group">
+            <input type="text" name="address_line_one" required placeholder=" ">
+            <label>Address Line 1</label>
+        </div>
+        <div class="form-group">
+            <input type="text" name="address_line_two" placeholder=" ">
+            <label>Address Line 2 (optional)</label>
+        </div>
+        <div class="form-group">
+            <input type="text" name="city" placeholder=" ">
+            <label>City</label>
+        </div>
+        <div class="form-group">
+            <input type="text" name="state" placeholder=" ">
+            <label>State</label>
+        </div>
+        <div class="form-group">
+            <input type="text" name="postal_code" placeholder=" ">
+            <label>Postal Code</label>
         </div>
         <div class="form-group">
             <select name="country" required>
@@ -102,50 +84,14 @@
         <div class="form-group">
             <textarea name="message" placeholder="Special Instructions (optional)"></textarea>
         </div>
-        <button type="submit" class="hover-effect">Proceed to Pay</button>
+        <button type="submit">Proceed to Pay</button>
     </form>
-    <div id="loader" class="hidden"></div>
+    <div id="loader" class="hidden">Processing...</div>
 </section>
 
-<!--impact-->
-<section class="impact-section fade-in">
-    <h2>Our Impact</h2>
-    <div class="impact-cards">
-        <div class="card hover-effect">
-            <p>"This donation helped me get school supplies!"</p>
-            <strong>- A Beneficiary</strong>
-        </div>
-        <div class="card hover-effect">
-            <p>"The fund provides meals to those in need."</p>
-            <strong>- Volunteer</strong>
-        </div>
-        <div class="card hover-effect">
-            <p>"We can now afford medical treatment thanks to donors."</p>
-            <strong>- Family</strong>
-        </div>
-    </div>
-</section>
-
-<!-- footer -->
-<footer class="fade-in">
-    <p>📍 Colombo, Sri Lanka</p>
-    <p>📧 info@baithulmal.lk | ☎ +94 11 123 4567</p>
-    <p>
-        <a href="#" class="hover-effect">YouTube</a> |
-        <a href="#" class="hover-effect">Facebook</a> |
-        <a href="#" class="hover-effect">Instagram</a> |
-        <a href="#" class="hover-effect">Twitter</a>
-    </p>
-    <p class="copyright">
-        CSR Contribution by PragICTS © 2025 Ceylon Baithulmal Fund. All Rights Reserved.
-    </p>
-</footer>
-
-<!-- Hidden WebXPay form -->
+<!-- Hidden form for WebXPay -->
 <form id="webxpayForm" method="POST" style="display:none;"></form>
 
-<!-- WebXPay Integration Script -->
 <script src="{% static 'core/js/donate.js' %}"></script>
-
 </body>
 </html>

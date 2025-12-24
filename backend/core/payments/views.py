@@ -1,39 +1,31 @@
-import hashlib
-import base64
+import logging
 from decimal import Decimal
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
-from django.urls import reverse
 from .models import Payment, FailedPayment
+from .crypto_utils import encrypt_payment
 
-# -------------------------------
-# WebXPay Hash Generator
-# -------------------------------
-def generate_webxpay_hash(merchant_id, transaction_id, amount, secret):
-    raw = f"{merchant_id}{transaction_id}{amount}{secret}"
-    return hashlib.md5(raw.encode()).hexdigest().upper()
+logger = logging.getLogger(__name__)
 
-# -------------------------------
-# Send Thank You Email
-# -------------------------------
+
 def send_thank_you_email(payment):
     subject = "Thank you for your donation"
     from_email = settings.EMAIL_HOST_USER
     to_email = [payment.email]
 
-    text_content = f"Dear {payment.first_name},\n\nThank you for your generous donation of USD {payment.amount}.\n\nBest regards,\nBaithulmal Team"
+    text_content = f"Dear {payment.first_name},\n\nThank you for your donation of USD {payment.amount}.\n\nBest regards,\nCeylon Baithulmal Fund"
 
     html_content = f"""
     <html>
-      <body style="font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 20px;">
-        <div style="background-color: #ffffff; max-width: 600px; margin: auto; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-          <h2 style="color:#0f3d2e;">Thank you for your donation!</h2>
+      <body style="font-family: Arial; background:#f4f6f8; padding:20px;">
+        <div style="background:#fff; padding:30px; max-width:600px; margin:auto;">
+          <h2>Thank you for your donation!</h2>
           <p>Dear <strong>{payment.first_name} {payment.last_name}</strong>,</p>
-          <p>We sincerely thank you for your generous donation of <strong style="color:#145c44;">USD {payment.amount:.2f}</strong>.</p>
-          <p>May Allah reward you abundantly for your kindness and generosity.</p>
-          <p>Warm regards,<br><strong>Ceylon Baithulmal Fund</strong></p>
+          <p>You donated <strong>USD {payment.amount:.2f}</strong>.</p>
+          <p>May Allah reward you.</p>
+          <p><strong>Ceylon Baithulmal Fund</strong></p>
         </div>
       </body>
     </html>
@@ -43,81 +35,86 @@ def send_thank_you_email(payment):
     email.attach_alternative(html_content, "text/html")
     email.send()
 
-# -------------------------------
-# Create Payment
-# -------------------------------
+
 @csrf_exempt
 def create_payment(request):
     if request.method != "POST":
         return JsonResponse({"error": "Invalid request"}, status=400)
 
-    # Split full name
-    full_name = request.POST.get("name", "")
-    first_name = full_name.split(" ")[0] if full_name else ""
-    last_name = " ".join(full_name.split(" ")[1:]) if len(full_name.split(" ")) > 1 else ""
-
-    # Convert amount to Decimal
     try:
-        amount = Decimal(request.POST.get("amount", "0"))
-    except:
-        return JsonResponse({"error": "Invalid amount"}, status=400)
+        # Get and validate amount
+        amount_str = request.POST.get("amount", "").strip()
+        try:
+            amount = Decimal(amount_str)
+            if amount <= 0:
+                return JsonResponse({"error": "Invalid amount"}, status=400)
+        except:
+            return JsonResponse({"error": "Invalid amount"}, status=400)
 
-    try:
+        # Create Payment record
         payment = Payment.objects.create(
-            first_name=first_name,
-            last_name=last_name,
-            email=request.POST.get("email"),
-            phone=request.POST.get("phone"),
-            country=request.POST.get("country"),
-            address_line_one=request.POST.get("address_line_one", ""),
+            first_name=request.POST.get("first_name", "").strip(),
+            last_name=request.POST.get("last_name", "").strip(),
+            email=request.POST.get("email", "").strip(),
+            phone=request.POST.get("phone", "").strip(),
+            address_line_one=request.POST.get("address_line_one", "").strip(),
+            address_line_two=request.POST.get("address_line_two", "").strip(),
+            city=request.POST.get("city", "").strip(),
+            state=request.POST.get("state", "").strip(),
+            postal_code=request.POST.get("postal_code", "").strip(),
+            country=request.POST.get("country", "").strip(),
             amount=amount,
-            message=request.POST.get("message", ""),
+            message=request.POST.get("message", "").strip(),
             status="Pending",
         )
+
+        # Encrypt payment parameter using RSA public key
+        encrypted_payment = encrypt_payment(str(payment.transaction_id), str(amount))
+
+        # Build params according to WebXPay documentation
+        params = {
+            "first_name": payment.first_name,           # Mandatory
+            "last_name": payment.last_name,             # Mandatory
+            "email": payment.email,                     # Mandatory
+            "contact_number": payment.phone,            # Mandatory
+            "address_line_one": payment.address_line_one,  # Mandatory
+            "address_line_two": payment.address_line_two,  # Optional
+            "city": payment.city,                       # Optional
+            "state": payment.state,                     # Optional
+            "postal_code": payment.postal_code,         # Optional
+            "country": payment.country,                 # Optional
+            "secret_key": settings.WEBXPAY_SECRET,     # Mandatory
+            "payment": encrypted_payment,               # Mandatory
+            "cms": "Django",                            # Mandatory
+            "process_currency": "USD",                  # Mandatory
+            "custom_fields": "",                        # Optional
+            "payment_gateway_id": "",                    # Optional
+            "callback_id": str(payment.transaction_id)  # Optional but recommended
+        }
+
+        return JsonResponse({
+            "payment_url": settings.WEBXPAY_URL,
+            "params": params
+        })
+
     except Exception as e:
+        logger.exception("Create payment error")
         return JsonResponse({"error": str(e)}, status=500)
 
-    # -------------------------------
-    # Format amount and generate secure hash
-    # -------------------------------
-    formatted_amount = f"{payment.amount:.2f}"
-    secure_hash = generate_webxpay_hash(
-        settings.WEBXPAY_MERCHANT_ID,
-        str(payment.transaction_id),
-        formatted_amount,
-        settings.WEBXPAY_SECRET,
-    )
 
-    # Dynamic URLs
-    return_url = request.build_absolute_uri(reverse('payment_callback'))
-    cancel_url = return_url  # optional: you can create a separate cancel view
-
-    return JsonResponse({
-        "payment_url": settings.WEBXPAY_URL,
-        "merchant_id": settings.WEBXPAY_MERCHANT_ID,
-        "order_id": str(payment.transaction_id),
-        "total_amount": formatted_amount,
-        "currency_code": "USD",  # change to "LKR" if needed
-        "secure_hash": secure_hash,
-        "return_url": return_url,
-        "cancel_url": cancel_url,
-    })
-
-# -------------------------------
-# Payment Callback
-# -------------------------------
 @csrf_exempt
 def payment_callback(request):
-    transaction_id = request.POST.get("transaction_id")
-    status = request.POST.get("status")
+    data = request.POST or request.GET
+    status = data.get("status")
+    transaction_id = data.get("transaction_id")
 
-    if not transaction_id:
+    if not transaction_id or not status:
         return HttpResponse("Invalid callback data", status=400)
 
     try:
         payment = Payment.objects.get(transaction_id=transaction_id)
 
-        if status == "SUCCESS":
+        if status.lower() in ["success", "paid"]:
             payment.status = "Success"
             payment.save()
             send_thank_you_email(payment)
@@ -131,9 +128,18 @@ def payment_callback(request):
                 last_name=payment.last_name,
                 email=payment.email,
                 phone=payment.phone,
-                amount=payment.amount,
+                address_line_one=payment.address_line_one,
+                address_line_two=payment.address_line_two,
+                city=payment.city,
+                state=payment.state,
+                postal_code=payment.postal_code,
+                country=payment.country,
+                amount=payment.amount
             )
             return HttpResponse("Payment Failed")
 
     except Payment.DoesNotExist:
         return HttpResponse("Payment not found", status=404)
+    except Exception as e:
+        logger.exception("Callback error")
+        return HttpResponse(str(e), status=500)

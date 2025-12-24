@@ -1,51 +1,47 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('donationForm');
-    if (!form) return;
+document.addEventListener("DOMContentLoaded", function () {
+    const donationForm = document.getElementById("donationForm");
+    const webxpayForm = document.getElementById("webxpayForm");
+    const loader = document.getElementById("loader");
 
-    form.addEventListener('submit', async function(e) {
+    donationForm.addEventListener("submit", async function (e) {
         e.preventDefault();
+        loader.classList.remove("hidden");
 
-        const loader = document.getElementById('loader');
-        loader.classList.remove('hidden');
-        loader.innerText = "Redirecting to payment...";
-
-        const formData = new FormData(this);
+        const formData = new FormData(donationForm);
 
         try {
             const response = await fetch("/payments/create/", {
                 method: "POST",
-                body: formData
+                body: formData,
             });
 
-            if (!response.ok) throw new Error(`Server responded with ${response.status}`);
             const data = await response.json();
 
-            if (data.payment_url) {
-                const webxpayForm = document.getElementById("webxpayForm");
-                webxpayForm.innerHTML = "";
-                webxpayForm.action = data.payment_url;
-                webxpayForm.method = "POST";
-
-                // Append required hidden fields
-                const requiredFields = ["merchant_id","order_id","total_amount","currency_code","secure_hash","return_url","cancel_url"];
-                requiredFields.forEach(key => {
-                    if (data[key]) {
-                        const input = document.createElement("input");
-                        input.type = "hidden";
-                        input.name = key;
-                        input.value = data[key];
-                        webxpayForm.appendChild(input);
-                    }
-                });
-
-                webxpayForm.submit();
-            } else {
-                loader.innerText = "Something went wrong. Please try again.";
-                console.error("No payment_url returned:", data);
+            if (data.error) {
+                alert("Error: " + data.error);
+                loader.classList.add("hidden");
+                return;
             }
-        } catch (error) {
-            console.error("Error connecting to server:", error);
-            loader.innerText = "Error connecting to server. Please try again later.";
+
+            // Populate hidden WebXPay form
+            webxpayForm.action = data.payment_url;
+            webxpayForm.innerHTML = ""; // clear previous inputs
+
+            for (const key in data.params) {
+                const input = document.createElement("input");
+                input.type = "hidden";
+                input.name = key;
+                input.value = data.params[key];
+                webxpayForm.appendChild(input);
+            }
+
+            // Submit to WebXPay
+            webxpayForm.submit();
+
+        } catch (err) {
+            console.error(err);
+            alert("Payment initiation failed.");
+            loader.classList.add("hidden");
         }
     });
 });
