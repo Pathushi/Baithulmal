@@ -92,10 +92,16 @@ def create_payment(request):
             "callback_id": str(payment.transaction_id)  # Optional but recommended
         }
 
+
+        # ADD THIS DEBUG LINE:
+        print(f"--- DEBUG: SENT SECRET KEY: {params['secret_key']} ---") 
+        print(f"--- DEBUG: SENT URL: {settings.WEBXPAY_URL} ---")
+
         return JsonResponse({
             "payment_url": settings.WEBXPAY_URL,
             "params": params
         })
+
 
     except Exception as e:
         logger.exception("Create payment error")
