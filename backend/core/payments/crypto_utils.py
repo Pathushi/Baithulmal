@@ -5,14 +5,19 @@ from Crypto.Cipher import PKCS1_v1_5
 from django.conf import settings
 
 def encrypt_payment(transaction_id: str, amount: str):
+    # Create the plaintext string
     plaintext = f"{transaction_id}|{amount}"
-
-    # Correctly join paths using os.path.join
-    # Use the directory of the current file to find the crypto folder
+    
+    # DEBUG: Print what we are about to encrypt
+    print(f"--- DEBUG: ENCRYPTION ---")
+    print(f"PLAINTEXT: {plaintext}")
+    
+    # Locate the key file relative to this script
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    key_file = os.path.join(current_dir, "crypto", "public_key.pem")    
+    key_file = os.path.join(current_dir, "crypto", "public_key.pem")
 
     if not os.path.exists(key_file):
+        print(f"ERROR: Key file not found at {key_file}")
         raise FileNotFoundError(f"Public key not found at {key_file}")
 
     with open(key_file, "rb") as f:
