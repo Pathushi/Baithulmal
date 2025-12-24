@@ -8,7 +8,9 @@ def encrypt_payment(transaction_id: str, amount: str):
     plaintext = f"{transaction_id}|{amount}"
 
     # Correctly join paths using os.path.join
-    key_file = os.path.join(settings.BASE_DIR, "payments", "crypto", "public_key.pem")
+    # Use the directory of the current file to find the crypto folder
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    key_file = os.path.join(current_dir, "crypto", "public_key.pem")    
 
     if not os.path.exists(key_file):
         raise FileNotFoundError(f"Public key not found at {key_file}")
