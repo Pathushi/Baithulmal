@@ -83,13 +83,14 @@ def create_payment(request):
             "state": payment.state,                     # Optional
             "postal_code": payment.postal_code,         # Optional
             "country": payment.country,                 # Optional
-            "secret_key": settings.WEBXPAY_SECRET,     # Mandatory
+            "secret_key": "81d80c30-9340-4a9f-a0a9-e7fdebd0ae04",     # Mandatory
             "payment": encrypted_payment,               # Mandatory
             "cms": "Django",                            # Mandatory
-            "process_currency": "USD",                  # Mandatory
+            "process_currency": "LKR",                  # Mandatory
             "custom_fields": "",                        # Optional
             "payment_gateway_id": "",                    # Optional
-            "callback_id": str(payment.transaction_id)  # Optional but recommended
+            "callback_id": str(payment.transaction_id), # Optional but recommended
+            "version": "5.2"                          # Mandatory
         }
 
 
