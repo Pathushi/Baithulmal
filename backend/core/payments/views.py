@@ -15,7 +15,7 @@ def send_thank_you_email(payment):
     from_email = settings.EMAIL_HOST_USER
     to_email = [payment.email]
 
-    text_content = f"Dear {payment.first_name},\n\nThank you for your donation of USD {payment.amount}.\n\nBest regards,\nCeylon Baithulmal Fund"
+    text_content = f"Dear {payment.first_name},\n\nThank you for your donation of LKR {payment.amount}.\n\nBest regards,\nCeylon Baithulmal Fund"
 
     html_content = f"""
     <html>
@@ -23,7 +23,7 @@ def send_thank_you_email(payment):
         <div style="background:#fff; padding:30px; max-width:600px; margin:auto;">
           <h2>Thank you for your donation!</h2>
           <p>Dear <strong>{payment.first_name} {payment.last_name}</strong>,</p>
-          <p>You donated <strong>USD {payment.amount:.2f}</strong>.</p>
+          <p>You donated <strong>LKR {payment.amount:.2f}</strong>.</p>
           <p>May Allah reward you.</p>
           <p><strong>Ceylon Baithulmal Fund</strong></p>
         </div>
