@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donate | Ceylon Baithulmal Fund</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
 </head>
 <body>
@@ -23,75 +25,137 @@
     </nav>
 </header>
 
-<section class="donation-section fade-in">
-    <h2>Online Donation</h2>
-    <form id="donationForm">
-        <div class="form-group">
-            <input type="text" name="first_name" required placeholder=" ">
-            <label>First Name</label>
+<!-- Intro & Purpose -->
+<section class="intro-section fade-in">
+    <div class="intro-box">
+        <h1>Ceylon Baithulmal Fund</h1>
+
+        <p class="intro-subtitle">
+            A trusted platform for meaningful and transparent donations
+        </p>
+
+        <p class="intro-text">
+            Your contribution helps us support the needy, provide humanitarian aid,
+            and uplift vulnerable communities through welfare, education, and
+            emergency assistance. Every donation is managed with integrity,
+            responsibility, and compassion.
+        </p>
+
+        <div class="quote-box">
+            <blockquote class="islamic-quote">
+                “The example of those who spend their wealth in the way of Allah is like
+                a seed which grows seven ears; in every ear there are a hundred grains.”
+                <span>— Qur'an 2:261</span>
+            </blockquote>
         </div>
-        <div class="form-group">
-            <input type="text" name="last_name" required placeholder=" ">
-            <label>Last Name</label>
-        </div>
-        <div class="form-group">
-            <input type="email" name="email" required placeholder=" ">
-            <label>Email</label>
-        </div>
-        <div class="form-group">
-            <input type="text" name="phone" required placeholder=" ">
-            <label>Phone Number (+94XXXXXXXXX)</label>
-        </div>
-        <div class="form-group">
-            <input type="text" name="address_line_one" required placeholder=" ">
-            <label>Address Line 1</label>
-        </div>
-        <div class="form-group">
-            <input type="text" name="address_line_two" placeholder=" ">
-            <label>Address Line 2 (optional)</label>
-        </div>
-        <div class="form-group">
-            <input type="text" name="city" placeholder=" ">
-            <label>City</label>
-        </div>
-        <div class="form-group">
-            <input type="text" name="state" placeholder=" ">
-            <label>State</label>
-        </div>
-        <div class="form-group">
-            <input type="text" name="postal_code" placeholder=" ">
-            <label>Postal Code</label>
-        </div>
-        <div class="form-group">
-            <select name="country" required>
-                <option value="">Select Country</option>
-                <option>Sri Lanka</option>
-                <option>Saudi Arabia</option>
-                <option>UAE</option>
-                <option>UK</option>
-                <option>USA</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <select name="amount" required>
-                <option value="">Select Amount</option>
-                <option value="50">LKR 50</option>
-                <option value="100">LKR 100</option>
-                <option value="250">LKR 250</option>
-                <option value="500">LKR 500</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <textarea name="message" placeholder="Special Instructions (optional)"></textarea>
-        </div>
-        <button type="submit">Proceed to Pay</button>
-    </form>
-    <div id="loader" class="hidden">Processing...</div>
+    </div>
 </section>
 
-<!-- Hidden form for WebXPay -->
+<!-- Donation Form -->
+<section class="donation-section fade-in">
+    <div class="donation-box">
+        <h2>Online Donation</h2>
+        <p class="donation-note">
+            Please fill in the details below to proceed with your secure donation.
+        </p>
+
+        <form id="donationForm">
+
+            <div class="form-group">
+                <i class="fas fa-user"></i>
+                <input type="text" name="first_name" required placeholder=" ">
+                <label>First Name</label>
+            </div>
+
+            <div class="form-group">
+                <i class="fas fa-user"></i>
+                <input type="text" name="last_name" required placeholder=" ">
+                <label>Last Name</label>
+            </div>
+
+            <div class="form-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" required placeholder=" ">
+                <label>Email</label>
+            </div>
+
+            <div class="form-group">
+                <i class="fas fa-phone"></i>
+                <input type="text" name="phone" required placeholder=" ">
+                <label>Phone Number (+94XXXXXXXXX)</label>
+            </div>
+
+            <div class="form-group">
+                <i class="fas fa-map-marker-alt"></i>
+                <input type="text" name="address_line_one" required placeholder=" ">
+                <label>Address Line 1</label>
+            </div>
+
+            <div class="form-group">
+                <i class="fas fa-map-marker-alt"></i>
+                <input type="text" name="address_line_two" placeholder=" ">
+                <label>Address Line 2 (optional)</label>
+            </div>
+
+            <div class="form-group">
+                <i class="fas fa-city"></i>
+                <input type="text" name="city" placeholder=" ">
+                <label>City</label>
+            </div>
+
+            <div class="form-group">
+                <i class="fas fa-flag"></i>
+                <input type="text" name="state" placeholder=" ">
+                <label>State</label>
+            </div>
+
+            <div class="form-group">
+                <i class="fas fa-mail-bulk"></i>
+                <input type="text" name="postal_code" placeholder=" ">
+                <label>Postal Code</label>
+            </div>
+
+            <div class="form-group">
+                <i class="fas fa-globe"></i>
+                <select name="country" required>
+                    <option value="">Select Country</option>
+                    <option>Sri Lanka</option>
+                    <option>Saudi Arabia</option>
+                    <option>UAE</option>
+                    <option>UK</option>
+                    <option>USA</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <i class="fas fa-hand-holding-heart"></i>
+                <select name="amount" required>
+                    <option value="">Select Amount</option>
+                    <option value="50">LKR 50</option>
+                    <option value="100">LKR 100</option>
+                    <option value="250">LKR 250</option>
+                    <option value="500">LKR 500</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <i class="fas fa-comment"></i>
+                <textarea name="message" placeholder="Special Instructions (optional)"></textarea>
+            </div>
+
+            <button type="submit">
+                Proceed to Pay
+            </button>
+        </form>
+
+        <div id="loader" class="hidden">Processing...</div>
+    </div>
+</section>
+
+<!-- Hidden WebXPay Form -->
 <form id="webxpayForm" method="POST" style="display:none;"></form>
 
 <script src="{% static 'core/js/donate.js' %}"></script>
+
 </body>
 </html>
