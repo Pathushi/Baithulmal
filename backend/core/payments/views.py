@@ -73,25 +73,33 @@ def create_payment(request):
 
         # Build params according to WebXPay documentation
         params = {
-            "first_name": payment.first_name,           # Mandatory
-            "last_name": payment.last_name,             # Mandatory
-            "email": payment.email,                     # Mandatory
-            "contact_number": payment.phone,            # Mandatory
-            "address_line_one": payment.address_line_one,  # Mandatory
-            "address_line_two": payment.address_line_two,  # Optional
-            "city": payment.city,                       # Optional
-            "state": payment.state,                     # Optional
-            "postal_code": payment.postal_code,         # Optional
-            "country": payment.country,                 # Optional
-            "secret_key": "81d80c30-9340-4a9f-a0a9-e7fdebd0ae04",     # Mandatory
-            "payment": encrypted_payment,               # Mandatory
-            "cms": "Django",                            # Mandatory
-            "process_currency": "LKR",                  # Mandatory
-            "custom_fields": "",                        # Optional
-            "payment_gateway_id": "",                    # Optional
-            "callback_id": str(payment.transaction_id), # Optional but recommended
-            "version": "5.2"                          # Mandatory
-        }
+        "first_name": payment.first_name,
+        "last_name": payment.last_name,
+        "email": payment.email,
+        "contact_number": payment.phone,
+        "address_line_one": payment.address_line_one,
+        "address_line_two": payment.address_line_two,
+        "city": payment.city,
+        "state": payment.state,
+        "postal_code": payment.postal_code,
+        "country": payment.country,
+        "return_url": settings.WEBXPAY_RETURN_URL,
+
+
+        "secret_key": settings.WEBXPAY_SECRET,
+        "payment": encrypted_payment,
+
+        # 🔴 REQUIRED FIX
+        "enc_method": "JCs3J+6oSz4V0LgE0zi/Bg==",
+
+        "cms": "Django",
+        "process_currency": "LKR",
+        "custom_fields": "",
+        "payment_gateway_id": "",
+        "callback_id": str(payment.transaction_id),
+        "version": "5.2"
+}
+
 
 
         # ADD THIS DEBUG LINE:
