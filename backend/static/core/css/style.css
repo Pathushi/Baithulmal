@@ -1,5 +1,5 @@
 /* ======================
-   General
+   1. General Reset & Base
 ====================== */
 * {
     box-sizing: border-box;
@@ -9,13 +9,14 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background: #f7f9f8;
+    background: #f7f9f8; /* Light grey background is crucial for the white box to show */
     color: #333;
     line-height: 1.6;
+    min-height: 100vh;
 }
 
 /* ======================
-   Animations
+   2. Animations
 ====================== */
 .fade-in {
     animation: fadeIn 1.2s ease-in-out forwards;
@@ -33,7 +34,7 @@ body {
 }
 
 /* ======================
-   Header
+   3. Header
 ====================== */
 header {
     background: linear-gradient(135deg, #0f3d2e, #1a5f4a);
@@ -43,6 +44,9 @@ header {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 header .logo {
@@ -55,6 +59,11 @@ nav a {
     margin-left: 15px;
     text-decoration: none;
     font-weight: 500;
+    transition: opacity 0.3s;
+}
+
+nav a:hover {
+    opacity: 0.8;
 }
 
 .donate-btn {
@@ -62,56 +71,67 @@ nav a {
     color: #000;
     padding: 8px 14px;
     border-radius: 5px;
+    font-weight: 600;
 }
 
 /* ======================
-   Intro Section
+   4. Intro Section (The White Box)
 ====================== */
 .intro-section {
+    width: 100%;
     max-width: 900px;
-    margin: 60px auto 40px;
+    margin: 60px auto 40px; /* Centers the section vertically and horizontally */
     padding: 0 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .intro-box {
-    background: #ffffff;
-    padding: 40px;
+    background: #ffffff;      /* This creates the white card */
+    padding: 50px;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* This creates the floating effect */
     text-align: center;
+    width: 100%;
 }
 
 .intro-box h1 {
     font-size: 34px;
     color: #0f3d2e;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .intro-subtitle {
     font-size: 16px;
-    color: #555;
-    margin-bottom: 20px;
+    color: #666;
+    margin-bottom: 25px;
+    font-weight: 600;
 }
 
 .intro-text {
     font-size: 15px;
     color: #444;
-    line-height: 1.7;
+    line-height: 1.8;
     margin-bottom: 30px;
 }
 
-/* Quote Box */
+/* ======================
+   5. Quote Box
+====================== */
 .quote-box {
-    background: linear-gradient(135deg, #eef5f1, #d9ebe0);
-    padding: 22px 26px;
-    border-radius: 10px;
-    border-left: 5px solid #0f3d2e;
+    background: #eef5f1;      /* Light Green Background */
+    padding: 25px;
+    border-radius: 8px;
+    border-left: 5px solid #0f3d2e; /* Green accent line */
+    text-align: left;
+    margin-top: 20px;
 }
 
 .islamic-quote {
     font-style: italic;
-    font-size: 14.5px;
+    font-size: 15px;
     color: #0f3d2e;
+    margin: 0;
 }
 
 .islamic-quote span {
@@ -119,66 +139,49 @@ nav a {
     margin-top: 10px;
     font-size: 13px;
     color: #555;
+    font-weight: 600;
     font-style: normal;
 }
 
 /* ======================
-   Donation Section
+   6. Donation Form Section
 ====================== */
 .donation-section {
-    max-width: 850px;
-    margin: auto;
-    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
 }
 
-.donation-box {
-    background: #ffffff;
-    padding: 35px;
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-}
-
-.donation-box h2 {
+.donation-section h2 {
     text-align: center;
     color: #0f3d2e;
-    margin-bottom: 10px;
-}
-
-.donation-note {
-    text-align: center;
-    font-size: 14px;
-    color: #666;
     margin-bottom: 30px;
+    font-size: 28px;
 }
 
 /* ======================
-   Form Styling
+   7. Form Inputs & Groups
 ====================== */
 .form-group {
     position: relative;
-    margin-bottom: 20px;
-}
-
-.form-group i {
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #999;
+    margin-bottom: 25px;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 12px 12px 12px 40px;
-    border: 2px solid #ccc;
+    padding: 14px 14px 14px 15px;
+    border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 15px;
+    background: #fff;
+    font-family: inherit;
+    transition: border-color 0.3s;
 }
 
 .form-group textarea {
-    min-height: 80px;
+    min-height: 100px;
     resize: vertical;
 }
 
@@ -187,16 +190,19 @@ nav a {
 .form-group textarea:focus {
     border-color: #0f3d2e;
     outline: none;
+    box-shadow: 0 0 0 3px rgba(15, 61, 46, 0.1);
 }
 
+/* Floating Labels */
 .form-group label {
     position: absolute;
-    top: 12px;
-    left: 40px;
+    top: 15px;
+    left: 15px;
     background: #ffffff;
     padding: 0 5px;
     color: #999;
-    transition: 0.2s;
+    font-size: 15px;
+    transition: 0.2s ease-out;
     pointer-events: none;
 }
 
@@ -205,42 +211,36 @@ nav a {
 .form-group textarea:focus + label,
 .form-group textarea:not(:placeholder-shown) + label {
     top: -10px;
+    left: 10px;
     font-size: 12px;
     color: #0f3d2e;
+    font-weight: 600;
 }
 
 /* ======================
-   Button
+   8. Buttons
 ====================== */
 form button {
     background: linear-gradient(135deg, #0f3d2e, #1a5f4a);
     color: white;
-    padding: 14px;
+    padding: 16px;
     border: none;
     width: 100%;
     cursor: pointer;
     font-size: 16px;
+    font-weight: 600;
     border-radius: 6px;
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px;
 }
 
 form button:hover {
     transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(15, 61, 46, 0.3);
 }
 
 /* ======================
-   Loader
-====================== */
-.hidden {
-    display: none;
-    margin-top: 15px;
-    text-align: center;
-    color: #0f3d2e;
-    font-weight: bold;
-}
-
-/* ======================
-   Responsive
+   9. Mobile Responsive
 ====================== */
 @media (max-width: 768px) {
     header {
@@ -249,11 +249,17 @@ form button:hover {
     }
 
     nav {
-        margin-top: 10px;
+        margin-top: 15px;
+        width: 100%;
     }
 
     nav a {
         display: block;
-        margin: 8px 0;
+        margin: 10px 0;
+        margin-left: 0;
+    }
+    
+    .intro-box {
+        padding: 30px 20px;
     }
 }
