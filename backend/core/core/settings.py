@@ -2,25 +2,25 @@ from pathlib import Path
 import environ
 import os
 
-# -------------------------------
-# Base directory
-# -------------------------------
-BASE_DIR = Path(__file__).resolve().parent.parent.parent  # points to backend/
 
-# -------------------------------
+# Base directory
+
+BASE_DIR = Path(__file__).resolve().parent.parent.parent  
+
+
 # Environment variables
-# -------------------------------
+
 env = environ.Env()
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 SECRET_KEY = 'django-insecure-42w0p)3^-k795of_zita6t7&md^z7cfzqyso-*rsdqzcd-9#yx'
 DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '13.127.0.86']
-# ALLOWED_HOSTS = ['*']
 
 
 
-# WebXPay API Configuration
+
+
 
 WEBXPAY_URL = env("WEBXPAY_URL")  
 # WEBXPAY_PUBLIC_KEY = env("WEBXPAY_PUBLIC_KEY")

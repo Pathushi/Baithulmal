@@ -68,7 +68,7 @@ def create_payment(request):
             status="Pending",
         )
 
-        # Force the amount to have 2 decimal places (e.g., "50.00" instead of "50")
+        # Force the amount to have 2 decimal places ("50.00" instead of "50")
         encrypted_payment = encrypt_payment(str(payment.transaction_id), f"{amount:.2f}")
 
         # Build params according to WebXPay documentation
@@ -89,7 +89,7 @@ def create_payment(request):
         "secret_key": settings.WEBXPAY_SECRET,
         "payment": encrypted_payment,
 
-        # 🔴 REQUIRED FIX
+        # REQUIRED FIX ( this why got the OTP generation error)
         "enc_method": "JCs3J+6oSz4V0LgE0zi/Bg==",
 
         "cms": "Django",
@@ -102,7 +102,7 @@ def create_payment(request):
 
 
 
-        # ADD THIS DEBUG LINE:
+        # DEBUG LINE:
         print(f"--- DEBUG: SENT SECRET KEY: {params['secret_key']} ---") 
         print(f"--- DEBUG: SENT URL: {settings.WEBXPAY_URL} ---")
 

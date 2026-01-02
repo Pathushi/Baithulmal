@@ -1,6 +1,6 @@
-/* ======================
-   1. General Reset & Base
-====================== */
+
+   /* 1. General Reset & Base */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -9,15 +9,15 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background: #f7f9f8; /* Light grey background is crucial for the white box to show */
+    background: #f7f9f8;
     color: #333;
     line-height: 1.6;
     min-height: 100vh;
 }
 
-/* ======================
-   2. Animations
-====================== */
+
+   /* 2. Animations */
+
 .fade-in {
     animation: fadeIn 1.2s ease-in-out forwards;
 }
@@ -33,9 +33,9 @@ body {
     }
 }
 
-/* ======================
-   3. Header
-====================== */
+
+   /* 3. Header */
+
 header {
     background: linear-gradient(135deg, #0f3d2e, #1a5f4a);
     color: white;
@@ -74,23 +74,23 @@ nav a:hover {
     font-weight: 600;
 }
 
-/* ======================
-   4. Intro Section (The White Box)
-====================== */
+
+   /* 4. Intro Section (The White Box) */
+
 .intro-section {
     width: 100%;
     max-width: 900px;
-    margin: 60px auto 40px; /* Centers the section vertically and horizontally */
+    margin: 60px auto 40px; 
     padding: 0 20px;
     display: flex;
     justify-content: center;
 }
 
 .intro-box {
-    background: #ffffff;      /* This creates the white card */
+    background: #ffffff;      
     padding: 50px;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* This creates the floating effect */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
     text-align: center;
     width: 100%;
 }
@@ -115,14 +115,14 @@ nav a:hover {
     margin-bottom: 30px;
 }
 
-/* ======================
-   5. Quote Box
-====================== */
+
+   /* 5. Quote Box */
+
 .quote-box {
-    background: #eef5f1;      /* Light Green Background */
+    background: #eef5f1;      
     padding: 25px;
     border-radius: 8px;
-    border-left: 5px solid #0f3d2e; /* Green accent line */
+    border-left: 5px solid #0f3d2e; 
     text-align: left;
     margin-top: 20px;
 }
@@ -143,9 +143,9 @@ nav a:hover {
     font-style: normal;
 }
 
-/* ======================
-   6. Donation Form Section
-====================== */
+
+   /* 6. Donation Form Section */
+
 .donation-section {
     max-width: 800px;
     margin: 0 auto 60px;
@@ -159,9 +159,9 @@ nav a:hover {
     font-size: 28px;
 }
 
-/* ======================
-   7. Form Inputs & Groups
-====================== */
+
+   /* 7. Form Inputs & Groups */
+
 .form-group {
     position: relative;
     margin-bottom: 25px;
@@ -217,9 +217,9 @@ nav a:hover {
     font-weight: 600;
 }
 
-/* ======================
-   8. Buttons
-====================== */
+
+   /* 8. Buttons */
+
 form button {
     background: linear-gradient(135deg, #0f3d2e, #1a5f4a);
     color: white;
@@ -239,9 +239,9 @@ form button:hover {
     box-shadow: 0 5px 15px rgba(15, 61, 46, 0.3);
 }
 
-/* ======================
-   9. Mobile Responsive
-====================== */
+
+   /* 9. Mobile Responsive */
+
 @media (max-width: 768px) {
     header {
         flex-direction: column;
