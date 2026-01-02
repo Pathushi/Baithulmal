@@ -2,7 +2,7 @@ from django.db import models
 import uuid
 
 class Payment(models.Model):
-    transaction_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+    transaction_id = models.CharField(max_length=100, default=uuid.uuid4, unique=True, editable=False)
     first_name = models.CharField(max_length=30)  # WebXPay max 30 chars
     last_name = models.CharField(max_length=30, blank=True)
     email = models.EmailField()
@@ -23,7 +23,7 @@ class Payment(models.Model):
 
 
 class FailedPayment(models.Model):
-    transaction_id = models.UUIDField()
+    transaction_id = models.CharField(max_length=100)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30, blank=True)
     email = models.EmailField()

@@ -5,24 +5,24 @@ import os
 
 # Base directory
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent  
+BASE_DIR = Path(__file__).resolve().parent.parent.parent  # points to backend/
 
 
 # Environment variables
 
 env = environ.Env()
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+# Read the .env file located in the same directory as this settings.py file
+environ.Env.read_env(os.path.join(Path(__file__).resolve().parent, '.env'))
 
-SECRET_KEY = 'django-insecure-42w0p)3^-k795of_zita6t7&md^z7cfzqyso-*rsdqzcd-9#yx'
-DEBUG = True
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '13.127.0.86']
-
-
-
+SECRET_KEY = env('SECRET_KEY')
+DEBUG = env.bool('DEBUG', default=False)
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 
 
-WEBXPAY_URL = env("WEBXPAY_URL")  
+# WebXPay API Configuration
+
+WEBXPAY_URL = env("WEBXPAY_URL")
 # WEBXPAY_PUBLIC_KEY = env("WEBXPAY_PUBLIC_KEY")
 WEBXPAY_API_USERNAME = env("WEBXPAY_API_USERNAME")
 WEBXPAY_API_PASSWORD = env("WEBXPAY_API_PASSWORD")

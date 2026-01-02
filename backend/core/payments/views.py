@@ -1,3 +1,4 @@
+import uuid
 import logging
 from decimal import Decimal
 from django.http import JsonResponse, HttpResponse
@@ -36,6 +37,7 @@ def send_thank_you_email(payment):
     email.send()
 
 
+
 @csrf_exempt
 def create_payment(request):
     if request.method != "POST":
@@ -68,10 +70,10 @@ def create_payment(request):
             status="Pending",
         )
 
-        # Force the amount to have 2 decimal places ("50.00" instead of "50")
+        # Force the amount to have 2 decimal places (e.g., "50.00" instead of "50")
         encrypted_payment = encrypt_payment(str(payment.transaction_id), f"{amount:.2f}")
 
-        # Build params according to WebXPay documentation
+         # Build params according to WebXPay documentation
         params = {
         "first_name": payment.first_name,
         "last_name": payment.last_name,
@@ -89,7 +91,7 @@ def create_payment(request):
         "secret_key": settings.WEBXPAY_SECRET,
         "payment": encrypted_payment,
 
-        # REQUIRED FIX ( this why got the OTP generation error)
+        # 🔴 REQUIRED FIX
         "enc_method": "JCs3J+6oSz4V0LgE0zi/Bg==",
 
         "cms": "Django",
@@ -99,6 +101,7 @@ def create_payment(request):
         "callback_id": str(payment.transaction_id),
         "version": "5.2"
 }
+
 
 
 
@@ -119,42 +122,58 @@ def create_payment(request):
 
 @csrf_exempt
 def payment_callback(request):
-    data = request.POST or request.GET
-    status = data.get("status")
-    transaction_id = data.get("transaction_id")
+    # Support both POST and GET
+    data = request.POST if request.POST else request.GET
 
-    if not transaction_id or not status:
-        return HttpResponse("Invalid callback data", status=400)
+    print(f"\n--- WEBXPAY CALLBACK DATA: {dict(data)} ---\n")
+
+    # 1. Get the ID (WebXPay sends it as 'order_id')
+    transaction_id = data.get("order_id")
+
+    # 2. Get the Status ("00" is success)
+    status_code = data.get("status_code")
+
+    if not transaction_id:
+        return HttpResponse("Invalid callback data: Missing order_id", status=400)
 
     try:
+        
         payment = Payment.objects.get(transaction_id=transaction_id)
 
-        if status.lower() in ["success", "paid"]:
+        # 3. Check Status
+        if status_code == "00":
             payment.status = "Success"
             payment.save()
-            send_thank_you_email(payment)
-            return HttpResponse("Payment Successful")
+            try:
+                send_thank_you_email(payment)
+            except Exception as e:
+                logger.error(f"Email failed: {e}")
+
+            return HttpResponse("""
+                <div style="text-align:center; padding:50px; font-family:Arial;">
+                    <h1 style="color:green;">Alhamdulillah! Payment Successful.</h1>
+                    <p>May Allah reward you.</p>
+                    <a href="/" style="background:#28a745; color:white; padding:10px 20px; text-decoration:none; border-radius:5px;">Return to Home</a>
+                </div>
+            """)
         else:
             payment.status = "Failed"
             payment.save()
             FailedPayment.objects.create(
                 transaction_id=payment.transaction_id,
                 first_name=payment.first_name,
-                last_name=payment.last_name,
-                email=payment.email,
-                phone=payment.phone,
-                address_line_one=payment.address_line_one,
-                address_line_two=payment.address_line_two,
-                city=payment.city,
-                state=payment.state,
-                postal_code=payment.postal_code,
-                country=payment.country,
                 amount=payment.amount
             )
-            return HttpResponse("Payment Failed")
+            return HttpResponse("""
+                <div style="text-align:center; padding:50px; font-family:Arial;">
+                    <h1 style="color:red;">Payment Failed</h1>
+                    <p>Please try again.</p>
+                    <a href="/" style="background:#dc3545; color:white; padding:10px 20px; text-decoration:none; border-radius:5px;">Try Again</a>
+                </div>
+            """)
 
     except Payment.DoesNotExist:
-        return HttpResponse("Payment not found", status=404)
+        return HttpResponse(f"Payment ID {transaction_id} not found", status=404)
     except Exception as e:
         logger.exception("Callback error")
         return HttpResponse(str(e), status=500)
