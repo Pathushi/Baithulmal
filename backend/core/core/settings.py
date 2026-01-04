@@ -11,6 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent  # points to backend/
 # Environment variables
 
 env = environ.Env()
+
 # Read the .env file located in the same directory as this settings.py file
 environ.Env.read_env(os.path.join(Path(__file__).resolve().parent, '.env'))
 

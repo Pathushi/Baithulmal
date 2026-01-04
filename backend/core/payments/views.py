@@ -70,10 +70,10 @@ def create_payment(request):
             status="Pending",
         )
 
-        # Force the amount to have 2 decimal places (e.g., "50.00" instead of "50")
+        # Force the amount to have 2 decimal places ("50.00" instead of "50")
         encrypted_payment = encrypt_payment(str(payment.transaction_id), f"{amount:.2f}")
 
-         # Build params according to WebXPay documentation
+         # Build parameters according to WebXPay documentation
         params = {
         "first_name": payment.first_name,
         "last_name": payment.last_name,
@@ -91,7 +91,7 @@ def create_payment(request):
         "secret_key": settings.WEBXPAY_SECRET,
         "payment": encrypted_payment,
 
-        # 🔴 REQUIRED FIX
+        # REQUIRED FIX (where i got the OTP from WebXPay support)
         "enc_method": "JCs3J+6oSz4V0LgE0zi/Bg==",
 
         "cms": "Django",

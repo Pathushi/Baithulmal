@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Populate hidden WebXPay form
             webxpayForm.action = data.payment_url;
-            webxpayForm.innerHTML = ""; // clear previous inputs
+            webxpayForm.innerHTML = ""; 
 
             for (const key in data.params) {
                 const input = document.createElement("input");
