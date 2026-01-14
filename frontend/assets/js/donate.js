@@ -3,29 +3,45 @@ document.addEventListener("DOMContentLoaded", function () {
     const webxpayForm = document.getElementById("webxpayForm");
     const loader = document.getElementById("loader");
 
-    if (!donationForm) return; // Prevent errors if on a different page
+    // Helper to get the CSRF token from Django's cookie
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    if (!donationForm) return; 
 
     donationForm.addEventListener("submit", async function (e) {
         e.preventDefault();
         
-        // Show loader (using style because your HTML loader doesn't use 'hidden' class)
         if (loader) loader.style.display = "block";
 
         const formData = new FormData(donationForm);
 
         try {
-            // 1. Correct the URL to point to your Django server (Port 8000)
-            const response = await fetch("http://127.0.0.1:8000/payments/create/", {
+            // FIXED: Using a relative URL so it finds the backend on the server
+            const response = await fetch("/payments/create/", {
                 method: "POST",
                 body: formData,
-                // If you aren't using @csrf_exempt in Django, you need the CSRF header here
+                headers: {
+                    // Required for Django security
+                    "X-CSRFToken": getCookie("csrftoken")
+                }
             });
 
-            // 2. Check if the response is actually JSON before parsing
             if (!response.ok) {
                 const text = await response.text();
-                console.error("Server Error Response:", text);
-                throw new Error(`Server returned ${response.status}: Not Found or Internal Error`);
+                throw new Error(`Server returned ${response.status}`);
             }
 
             const data = await response.json();
@@ -36,11 +52,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // 3. Handle WebXPay Form population
-            // Create the form if it doesn't exist in HTML
-            let finalWebxForm = webxpayForm;
-            if (!finalWebxForm) {
-                finalWebxForm = document.createElement("form");
+            // Populate and submit the hidden WebXPay form
+            let finalWebxForm = webxpayForm || document.createElement("form");
+            if (!webxpayForm) {
                 finalWebxForm.method = "POST";
                 finalWebxForm.style.display = "none";
                 document.body.appendChild(finalWebxForm);
@@ -62,7 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
         } catch (err) {
             console.error("Payment Error:", err);
             alert("Payment initiation failed: " + err.message);
-            // Hide loader so user can try again
             if (loader) loader.style.display = "none";
         }
     });

@@ -18,7 +18,7 @@ environ.Env.read_env(os.path.join(Path(__file__).resolve().parent, '.env'))
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = env.bool('DEBUG', default=False)
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
-
+ALLOWED_HOSTS = ['47.131.0.234', '127.0.0.1', 'localhost']
 
 
 # WebXPay API Configuration
@@ -63,6 +63,7 @@ MIDDLEWARE = [
 
 # Allow port 3000 (where your HTML is running)
 CORS_ALLOWED_ORIGINS = [
+    "http://47.131.0.234",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
 ]
@@ -85,8 +86,8 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # backend/templates/
-        'APP_DIRS': True,  # also look inside app/templates/
+        'DIRS': ['/home/ubuntu/staging2/Baithulmal/frontend'], 
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
