@@ -1,3 +1,14 @@
+# Protects sensitive data
+# Ensures only gateway can read values
+# Required by many banks/payment providers
+
+
+# Amount cannot be changed by users
+
+# Transaction data is trusted
+
+# Payment integrity is maintained
+
 import os
 import base64
 from Crypto.PublicKey import RSA
@@ -5,7 +16,7 @@ from Crypto.Cipher import PKCS1_v1_5
 from django.conf import settings
 
 def encrypt_payment(transaction_id: str, amount: str):
-    # Create the plaintext string
+    # Create the plaintext string to protect data
     plaintext = f"{transaction_id}|{amount}"
     
     # DEBUG: Print what we are about to encrypt
@@ -23,6 +34,7 @@ def encrypt_payment(transaction_id: str, amount: str):
     with open(key_file, "rb") as f:
         public_key = RSA.import_key(f.read())
 
+    # RSA Encryption - to encrypt data
     cipher = PKCS1_v1_5.new(public_key)
     encrypted_bytes = cipher.encrypt(plaintext.encode("utf-8"))
     encrypted_b64 = base64.b64encode(encrypted_bytes).decode("ascii")

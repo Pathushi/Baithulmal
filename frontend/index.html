@@ -1,0 +1,1811 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Ceylon Baithulmal | Service to humanity is service to God</title>
+    <meta property="og:title" content="Ceylon Baithulmal Fund" />
+     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Baithulmal" />
+    <meta property="og:description" content="Service to humanity is service to God" />
+    <meta property="og:url" content="https://baithulmal.lk/" />
+    <meta property="og:image" content="https://baithulmal-temp.s3.ap-southeast-1.amazonaws.com/og/baithulmal-logo.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    
+
+
+    <!--Favicon-->
+    <link rel="icon" href="frontend/assets/img/about/baithulmal-logo.png" type="image/png">
+
+    <!-- Bootstrap CSS -->
+    <link href="frontend/assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Line Awesome CSS -->
+    <link href="frontend/assets/css/line-awesome.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="frontend/assets/css/fontAwesomePro.css" rel="stylesheet">
+    <!-- Animate CSS-->
+    <link href="frontend/assets/css/animate.css" rel="stylesheet">
+    <!-- Bar Filler CSS -->
+    <link href="frontend/assets/css/barfiller.css" rel="stylesheet">
+    <!-- Magnific Popup Video -->
+    <link href="frontend/assets/css/magnific-popup.css" rel="stylesheet">
+    <!-- Flaticon CSS -->
+    <link href="frontend/assets/css/flaticon.css" rel="stylesheet">
+    <!-- Owl Carousel CSS -->
+    <link href="frontend/assets/css/owl.carousel.css" rel="stylesheet">
+    <!-- Slick Slider CSS -->
+    <link href="frontend/assets/css/slick.css" rel="stylesheet">
+    <!-- Nice Select  -->
+    <link href="frontend/assets/css/nice-select.css" rel="stylesheet">
+    <!-- Back to Top -->
+    <link href="frontend/assets/css/backToTop.css" rel="stylesheet">
+    <!-- Metis Menu -->
+    <link href="frontend/assets/css/metismenu.css" rel="stylesheet">
+    <!-- Odometer CSS -->
+    <link href="frontend/assets/css/odometer.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="frontend/assets/css/style.css" rel="stylesheet">
+
+
+    <!-- jquery -->
+    <script src="frontend/assets/js/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Pre-Loader -->
+    <div id="loader"></div>
+
+    <!-- Mouse Cursor  -->
+    <div class="mouseCursor cursor-outer"></div>
+    <div class="mouseCursor cursor-inner"><span>Drag</span></div>
+
+    <style>
+    /* Default styles for navlink */
+.navlink.scroll-transition {
+  color: white !important;/* White at the top */
+  /*transition: color 0.3s ease;  Smooth color transition */
+}
+
+/* When scrolled, navlink changes to black */
+body.scrolled .navlink.scroll-transition {
+  /*color: #797979 !important;  Force black to avoid style conflicts */
+  color: #000 !important;
+}
+        
+            </style>
+        
+            
+
+            <script>
+            // Add scroll event listener to toggle the 'scrolled' class
+window.addEventListener('scroll', () => {
+  const body = document.body;
+  const scrolled = window.scrollY > 0; // Check if page is scrolled
+  if (scrolled) {
+    body.classList.add('scrolled'); // Add class when scrolled
+  } else {
+    body.classList.remove('scrolled'); // Remove class when at the top
+  }
+});
+
+
+            </script>
+
+
+    <!-- Header Area  -->
+    <div class="header-area absolute-header">
+        <div id="header-sticky">
+            <div class="navigation">
+                <div class="container-fluid">
+
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-auto"> 
+                            <div class="logo">
+                                <!-- Default Logo -->
+                                <img src="frontend/assets/img/about/white-logo.png" alt="default logo" class="logo-default">
+                                <!-- Scroll Logo -->
+                                <img src="frontend/assets/img/about/baithulmal-logo.png" alt="scroll logo" class="logo-scroll">
+                            </div>
+                        </div>
+                        <div class="col-auto d-none d-lg-block text-center">
+                            <div class="date-time">
+                                <div id="islamic-date" class="menu-text" style="font-size: 14px; font-weight: bold;"></div>
+                                <div id="current-time" class="menu-text" style="font-size: 14px; font-weight: bold;"></div>
+                            </div>
+                        </div>
+                        <div class="col-auto d-none d-lg-block text-lg-end">
+                            <div class="main-menu ">
+                                <div class="main-menu">
+                                    <ul>
+                                        <li class="active"><a class="navlink scroll-transition" href="index.html">Home</a>
+                                        </li>
+                                        <li><a class="navlink scroll-transition" href="about-cbf.html">About Us</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="about-cbf.html">CBF</a></li>
+                                                <li><a href="about-zakat.html">Zakat</a></li>
+                                                <li><a href="partners.html">Partners</a></li>
+                                            
+
+                                            </ul>
+                                        </li>
+                                        <li><a class="navlink scroll-transition" href="projects.html">Projects</a></li>
+                                        <li><a class="navlink scroll-transition" href="gallery.html">Gallery</a></li>
+                                        <li><a class="navlink scroll-transition" href="news.html">News</a></li>
+                                        <li><a class="navlink scroll-transition" href="contact.html">Contact</a></li>
+                                        <li style="position: relative;">
+                                            <a class="navlink contact-link" href="tel:+94112599075">
+                                                <i class="fas fa-phone" style="color: #92BC13;"></i>
+                                            </a>
+                                            <span class="tooltip">+94 112599075</span>
+                                        </li>
+                                        <li style="position: relative;">
+                                            <a class="navlink email-link"  href="mailto:c.baithulmal@gmail.com">
+                                                <i class="fas fa-envelope" style="margin-right: 0px; color: #92BC13;"></i>
+                                            </a>
+                                            <span class="tooltip">c.baithulmal@gmail.com</span>
+                                        </li>
+                                        <li style="position: relative;">
+                                             <a class="navlink email-link"  href="calender.html">
+                                                <i class="fas fa-calendar-alt" style="margin-right: 0px; color: #92BC13;"></i>
+                                            </a>
+                                            <span class="tooltip">Islamic Events</span>
+                                        </li>
+                                        <li style="position: relative;">
+                                            <a class="navlink email-link" href="#">
+                                                <i class="fas fa-clock" style="margin-right: 0px; color: #92BC13;"></i>
+                                            </a>
+                                            <span class="tooltip">Today's Prayer Time</span>
+                                        </li>
+                                        <!--
+                                        <li style="position: relative;">
+                                            <a class="navlink email-link" href="calendar.html">
+                                                <i class="fas fa-clock" style="margin-right: 0px; color: #92BC13;"></i>
+                                            </a>
+                                            <span class="tooltip" id="prayer-times-tooltip">Loading...</span>
+                                        </li>-->
+                                        
+
+                                        <li><a class="navlink" href="donate.html" style="
+                                            background: #92BC13;
+                                            color: #fff;
+                                            font-size: 12px;
+                                            font-weight: 600;
+                                            letter-spacing: 1px;
+                                            text-transform: uppercase;
+                                            padding: 15px 28px;
+                                            border: 1px solid #92BC13;
+                                            margin-top: 0px;
+                                            margin-bottom: 25px;
+                                            text-align: center;">Donate
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mobile Menu -->
+                        <div class="mobile-nav-bar col-6 d-block d-lg-none">
+                            <div class="mobile-nav-wrap">
+                                <div id="hamburger">
+                                    <i class="las la-bars"></i>
+                                </div>
+                                <!-- mobile menu - responsive menu  -->
+                                <div class="mobile-nav">
+                                    <button type="button" class="close-nav">
+                                        <i class="las la-times-circle"></i>
+                                    </button>
+                                    <nav class="sidebar-nav">
+                                        <ul class="metismenu" id="mobile-menu">
+                                            <li><a class="" href="index.html">Home</a>
+                                            </li>
+                                            <li><a class="has-arrow" href="about-cbf.html">About Us</a>
+                                                <ul class="sub-menu">
+                                                    <li><a href="about-cbf.html">CBF</a></li>
+                                                    <li><a href="about-zakat.html">Zakat</a></li>
+                                                     <li><a href="partners.html">Partners</a></li>
+                                            
+                                                </ul>
+                                            </li>
+                                            <li><a class="" href="projects.html">Projects</a></li>
+                                            <li><a class="" href="gallery.html">Gallery</a></li>
+                                            <li><a class="" href="news.html">News</a></li>
+                                            <li><a href="contact.html">Contact</a></li>
+                                             <li style="position: relative;">
+        <a class="navlink email-link" href="calender.html">
+            <i class="fas fa-calendar-alt" style="margin-right: 0px; color: #92BC13;"></i>
+            Islamic Events
+        </a>
+    </li>
+    <li style="position: relative;">
+        <a class="navlink email-link" href="#">
+            <i class="fas fa-clock" style="margin-right: 0px; color: #92BC13;"></i>
+            Today's Prayer Time
+        </a>
+    </li>
+                                        </ul>
+
+                                    </nav>
+                                    <div class="action-bar">
+                                        <div class="date-time">
+                                            <div id="mobile-islamic-date" style="font-size: 14px; font-weight: bold;"></div>
+                                            <div id="mobile-current-time" style="font-size: 14px; font-weight: bold;"></div>
+                                        </div>
+                                        <a href="mailto:c.baithulmal@gmail.com"><i
+                                                class="las la-envelope"></i>c.baithulmal@gmail.com</a>
+                                        <a href="tel:+94112599075"><i class="fal fa-phone"></i>(+94) 11 25 99 075</a>
+                                        <a href="tel:+94112591254"><i class="fal fa-phone"></i>(+94) 11 25 91 254</a>
+                                        <a href="donate.html" class="theme-btn">Donate</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+
+    <script>
+        
+async function fetchPrayerTimes() {
+    const url = 'http://api.aladhan.com/v1/timingsByCity?city=Colombo&country=Sri%20Lanka&method=2'; // API endpoint for Sri Lanka
+
+    try {
+        let response = await fetch(url);
+        let data = await response.json();
+
+        if (data.code === 200) {
+            const timings = data.data.timings;
+            const tooltip = document.getElementById('prayer-times-tooltip');
+
+            // Format prayer times and display them in the tooltip
+            tooltip.innerHTML = `
+                Fajr: ${timings.Fajr} <br>
+                Dhuhr: ${timings.Dhuhr} <br>
+                Asr: ${timings.Asr} <br>
+                Maghrib: ${timings.Maghrib} <br>
+                Isha: ${timings.Isha}
+            `;
+        } else {
+            document.getElementById('prayer-times-tooltip').innerText = 'Error loading times';
+        }
+    } catch (error) {
+        console.error("Error fetching prayer times:", error);
+        document.getElementById('prayer-times-tooltip').innerText = 'Error loading times';
+    }
+}
+
+// Call the function on page load
+window.onload = fetchPrayerTimes;
+
+    </script>
+
+
+
+
+   <script>
+    // Function to calculate the Islamic date
+    function getIslamicDate() {
+        const islamicMonths = [
+            "Muharram", "Safar", "Rabi' al-Awwal", "Rabi' al-Thani",
+            "Jumada al-Awwal", "Jumada al-Thani", "Rajab", "Sha'ban",
+            "Ramadan", "Shawwal", "Dhu al-Qi'dah", "Dhu al-Hijjah"
+        ];
+
+        const today = new Date();
+        const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+        const formatter = new Intl.DateTimeFormat('en-u-ca-islamic', options);
+        const islamicDateString = formatter.format(today);
+
+        // Split and parse the formatted Islamic date
+        const [month, day, year] = islamicDateString.split('/');
+        const islamicMonthName = islamicMonths[parseInt(month, 10) - 1];
+
+        // ✅ Adjust by -1 so 5 Sept 2025 = 11 Rabi al-Awwal
+        const islamicDayName = parseInt(day, 10) - 1;
+
+        return `${islamicDayName} ${islamicMonthName} ${year}`;
+    }
+
+    // Function to display the current time
+    function getCurrentTime() {
+        const now = new Date();
+        return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    }
+
+    // Update the Islamic date and time
+    function updateDateTime() {
+        const islamicDate = getIslamicDate();
+        const currentTime = getCurrentTime();
+
+        // Update desktop version
+        document.getElementById("islamic-date").textContent = islamicDate;
+        document.getElementById("current-time").textContent = currentTime;
+
+        // Update mobile version
+        document.getElementById("mobile-islamic-date").textContent = islamicDate;
+        document.getElementById("mobile-current-time").textContent = currentTime;
+    }
+
+    // Initialize and refresh the time every second
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+</script>
+    
+
+    <style>
+        /* Default state: White text */
+.menu-text {
+    color: white;
+    transition: color 0.3s ease-in-out;
+}
+
+/* When scrolled: Black text */
+.header-scrolled .menu-text {
+    /*color: #797979;*/
+    color: #000;
+}
+
+/* Center alignment for the date and time */
+.date-time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Mobile-specific styles */
+.mobile-nav .date-time {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.mobile-nav .date-time div {
+    font-size: 14px;
+    font-weight: bold;
+    color: #999898; /* Default for mobile, not affected by scroll */
+}
+    </style>
+
+
+    <style>
+      
+        /* General Logo Styling */
+        .logo img {
+            height: 95px;
+width: 114px;
+            display: block;
+            /* Ensure both logos are initially displayed as block elements */
+        }
+
+        /* Hide Scroll Logo by Default */
+        .logo .logo-scroll {
+            display: none;
+        }
+
+        /* Show Scroll Logo and Hide Default Logo on Scroll */
+        .header-scrolled .logo .logo-default {
+            display: none;
+        }
+
+        .header-scrolled .logo .logo-scroll {
+            display: block;
+        }
+
+        /* Smooth Transition for Header Changes */
+        #header-sticky {
+            transition: all 0.3s ease-in-out;
+        }
+
+
+
+        
+    </style>
+    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const header = document.getElementById('header-sticky');
+
+            // Scroll Event Listener
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled'); // Add class when scrolled
+                } else {
+                    header.classList.remove('header-scrolled'); // Remove class when at top
+                }
+            });
+        });
+
+
+    </script>
+
+
+
+    <!-- Hero Area -->
+    <div id="home-2" class="homepage-slides owl-carousel">
+        <div class="single-slide-item d-flex align-items-center"
+            data-background="frontend/assets/img/slider/cbf-banner-since-1950s.jpg">
+            <div class="hero-area-content">
+                <div class="container">
+                    <div class="row align-items-center ">
+                        <div class="col-xl-12 col-lg-8 col-md-10 col-sm-8 wow fadeInUp animated" data-wow-delay="0.8s">
+                            <div class="section-title">
+                                <h1 class="text-white">Empowering the needy</h1>
+                                <h2 class="text-white">Since 1957</h2>
+                            </div>
+                            <p class="text-white"></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single-slide-item d-flex align-items-center"
+            data-background="frontend/assets/img/slider/self.jpg">
+            <!-- <div class="overlay"></div>                 -->
+            <div class="hero-area-content">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-lg-8 col-md-10 wow fadeInUp animated" data-wow-delay=".2s">
+                            <div class="section-title">
+                                <h1 class="text-white">Assistance In</h1>
+                                <h2 class="text-white">Self Employment</h2>
+                            </div>
+                            <p class="text-white"></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--
+        <div class="single-slide-item d-flex align-items-center"
+            data-background="assets/img/slider/cbf-banner-helping-clean-water-1.jpg">
+            <div class="hero-area-content">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-lg-8 col-md-10 wow fadeInUp animated" data-wow-delay=".2s">
+                            <div class="section-title">
+                                <h1 class="text-white">Access To</h1>
+                                <h2 class="text-white">Clean Water & Electricity </h2>
+                            </div>
+                            <p class="text-white"></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <div class="single-slide-item d-flex align-items-center"
+            data-background="frontend/assets/img/slider/deep_well.jpg">
+            <div class="hero-area-content">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-lg-8 col-md-10 wow fadeInUp animated" data-wow-delay=".2s">
+                            <div class="section-title">
+                                <h1 class="text-white">Access to Clean Water</h1>
+                                <h2 class="text-white">Deep Well Projects</h2>
+                            </div>
+                            <p class="text-white"></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--
+        <div class="single-slide-item d-flex align-items-center"
+            data-background="assets/img/slider/cbf-banner-helping-housing.jpg">
+             <div class="overlay"></div>                      
+            <div class="hero-area-content">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-lg-8 col-md-10 wow fadeInUp animated" data-wow-delay=".2s">
+                            <div class="section-title">
+                                <h1 class="text-white">Assistance In</h1>
+                                <h2 class="text-white">Housing </h2>
+                            </div>
+                            <p class="text-white"></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <div class="single-slide-item d-flex align-items-center"
+            data-background="frontend/assets/img/slider/scholarship.jpg">
+            <div class="hero-area-content">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-lg-8 col-md-10 wow fadeInUp animated" data-wow-delay=".2s">
+                            <div class="section-title">
+                                <h1 class="text-white">Scholarship Programs</h1>
+                                <h2 class="text-white">University & Advance Level</h2>
+                            </div>
+                            <p class="text-white"></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--
+        <div class="single-slide-item d-flex align-items-center"
+            data-background="assets/img/slider/cbf-banner-helping-education-2.jpg">
+            <div class="hero-area-content">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-lg-8 col-md-10 wow fadeInUp animated" data-wow-delay=".2s">
+                            <div class="section-title">
+                                <h1 class="text-white">Assistance In</h1>
+                                <h2 class="text-white">Education </h2>
+                            </div>
+                            <p class="text-white"></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single-slide-item d-flex align-items-center"
+            data-background="assets/img/slider/cbf-banner-helping-healthcare.jpg">
+            <div class="hero-area-content">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-lg-8 col-md-10 wow fadeInUp animated" data-wow-delay=".2s">
+                            <div class="section-title">
+                                <h1 class="text-white">Assistance In</h1>
+                                <h2 class="text-white">Healthcare </h2>
+                            </div>
+                            <p class="text-white"></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <div class="single-slide-item d-flex align-items-center"
+            data-background="frontend/assets/img/slider/sewing.jpg">
+            <div class="hero-area-content">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-lg-8 col-md-10 wow fadeInUp animated" data-wow-delay=".2s">
+                            <div class="section-title">
+                                <h1 class="text-white">Distribution of Sewing and Juki Machines</h1>
+                                <h2 class="text-white">Self Employment</h2>
+                            </div>
+                            <p class="text-white"></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single-slide-item d-flex align-items-center"
+            data-background="frontend/assets/img/slider/marriage.jpg">
+            <div class="hero-area-content">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-lg-8 col-md-10 wow fadeInUp animated" data-wow-delay=".2s">
+                            <div class="section-title">
+                                <h1 class="text-white">General Assistance</h1>
+                                <h2 class="text-white">Distress Relief and Marriage Assistance</h2>
+                            </div>
+                            <p class="text-white"></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single-slide-item d-flex align-items-center"
+            data-background="frontend/assets/img/slider/loan.jpg">
+            <div class="hero-area-content">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-lg-8 col-md-10 wow fadeInUp animated" data-wow-delay=".2s">
+                            <div class="section-title">
+                                <h1 class="text-white">Qardhasana (Interest Free) Loans</h1>
+                                <h2 class="text-white">For Emergency Needs</h2>
+                            </div>
+                            <p class="text-white"></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single-slide-item d-flex align-items-center"
+            data-background="frontend/assets/img/slider/urban.jpg">
+            <div class="hero-area-content">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-lg-8 col-md-10 wow fadeInUp animated" data-wow-delay=".2s">
+                            <div class="section-title">
+                                <h1 class="text-white">Assistance In</h1>
+                                <h2 class="text-white">Urban and Village Development Programs</h2>
+                            </div>
+                            <p class="text-white"></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+    <!-- About Area  -->
+    <div class="about-section section-padding pt-0 pb-0">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-12 col-lg-6 mb-60">
+                    <div class="wow fadeInUp animated" data-wow-delay=".2s"
+                        style="animation-duration: 1.5s;">
+                        <p>
+                           The Ceylon Baithulmal Fund Inc., established on 29th March 1957 and later incorporated by an Act of Parliament (Law No. 9 of 1976), was founded with a noble mission to alleviate poverty and uplift the socio-economic conditions of the Sri Lankan Muslim community. Since its inception, the Fund has remained steadfast in addressing the challenges of destitution, hardship, and social inequality faced by the underprivileged. Guided by the principles of compassion, solidarity, and accountability, the organization seeks to provide meaningful assistance to those in need, empower families to achieve self-reliance, and promote community welfare through structured and sustainable initiatives.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ <div id="testimonial-3" class="testimonial-section section-padding pt-40 pb-90">
+        <div class="container">
+            <div class="row mt-0">
+                <div class="testimonial-carousel1 owl-carousel">
+                    <div class="single-testimonial-item text-start">      
+                        <div class="quote-icon">
+                            <img src="frontend/assets/img/quotes-green.png" alt="">
+                        </div>                  
+                        <p style="color: black;">“Charity is due upon every joint of a person, every day the sun rises…”</p>
+                        <div class="testimonial-author">
+                            <p>Prophet Muhammad PBUH | Ṣaḥīḥ Muslim, Book 12, Hadith 1005</p>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-item text-start">
+                        <div class="quote-icon">
+                            <img src="frontend/assets/img/quotes-green.png" alt="">
+                        </div>                  
+                        <p style="color: black;">“Give charity without delay, for it stands in the way of calamity.”</p>
+                        <div class="testimonial-author">
+                            <p>Prophet Muhammad PBUH | Jāmi‘ al-Tirmidhī, Vol. 3, Book 8, Hadith 589</p>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-item text-start">  
+                        <div class="quote-icon">
+                            <img src="frontend/assets/img/quotes-green.png" alt="">
+                        </div>                                        
+                        <p style="color: black;">“When a man dies, his deeds come to an end except for three: Sadaqah Jāriyah, beneficial knowledge, or a righteous child who prays for him.”</p> 
+                        <div class="testimonial-author">
+                            <p>Prophet Muhammad PBUH | Ṣaḥīḥ Muslim, Book 13, Hadith 1631</p>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-item text-start">  
+                        <div class="quote-icon">
+                            <img src="frontend/assets/img/quotes-green.png" alt="">
+                        </div>                                        
+                        <p style="color: black;">“The believer’s shade on the Day of Resurrection will be his charity.”</p> 
+                        <div class="testimonial-author">
+                            <p>Prophet Muhammad PBUH | Jāmi‘ al-Tirmidhī, Vol. 3, Book 8, Hadith 604</p>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-item text-start">  
+                        <div class="quote-icon">
+                            <img src="frontend/assets/img/quotes-green.png" alt="">
+                        </div>                                        
+                        <p style="color: black;">“Protect yourself from Hell-fire even by giving half a date in charity.”</p> 
+                        <div class="testimonial-author">
+                            <p>Prophet Muhammad PBUH | Ṣaḥīḥ al-Bukhārī, Book 24, Hadith 498, Ṣaḥīḥ Muslim, Book 12, Hadith 1016</p>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-item text-start">  
+                        <div class="quote-icon">
+                            <img src="frontend/assets/img/quotes-green.png" alt="">
+                        </div>                                        
+                        <p style="color: black;">“Allah said: ‘Spend, O son of Adam, and I shall spend on you.’”</p> 
+                        <div class="testimonial-author">
+                            <p>Prophet Muhammad PBUH | Ṣaḥīḥ al-Bukhārī, Book 24, Hadith 507; Ṣaḥīḥ Muslim, Book 12, Hadith 993</p>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-item text-start">  
+                        <div class="quote-icon">
+                            <img src="frontend/assets/img/quotes-green.png" alt="">
+                        </div>                                        
+                        <p style="color: black;">“Charity does not decrease wealth…”</p> 
+                        <div class="testimonial-author">
+                            <p>Prophet Muhammad PBUH | Ṣaḥīḥ Muslim, Book 32, Hadith 2588</p>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-item text-start">  
+                        <div class="quote-icon">
+                            <img src="frontend/assets/img/quotes-green.png" alt="">
+                        </div>                                        
+                        <p style="color: black;">“Sadaqah extinguishes sin as water extinguishes fire.”</p> 
+                        <div class="testimonial-author">
+                            <p>Prophet Muhammad PBUH | Jāmi‘ al-Tirmidhī, Vol. 4, Book 1, Hadith 2616</p>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-item text-start">  
+                        <div class="quote-icon">
+                            <img src="frontend/assets/img/quotes-green.png" alt="">
+                        </div>                                        
+                        <p style="color: black;">“Giving charity to a relative is two: charity and maintaining family ties.”</p> 
+                        <div class="testimonial-author">
+                            <p>Prophet Muhammad PBUH | Sunan al-Nasā’ī, Vol. 3, Book 23, Hadith 2582</p>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-item text-start">  
+                        <div class="quote-icon">
+                            <img src="frontend/assets/img/quotes-green.png" alt="">
+                        </div>                                        
+                        <p style="color: black;">“The best charity is that which is given when you are healthy, covetous, hoping for wealth and fearing poverty.”</p> 
+                        <div class="testimonial-author">
+                            <p>Prophet Muhammad PBUH | Ṣaḥīḥ al-Bukhārī, Book 55, Hadith 111; Ṣaḥīḥ Muslim, Book 12, Hadith 1032</p>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-item text-start">  
+                        <div class="quote-icon">
+                            <img src="frontend/assets/img/quotes-green.png" alt="">
+                        </div>                                        
+                        <p style="color: black;">“The upper hand is better than the lower hand (i.e., the one who gives is better than the one who receives).”</p> 
+                        <div class="testimonial-author">
+                            <p>Prophet Muhammad PBUH | Ṣaḥīḥ al-Bukhārī, Book 24, Hadith 508; Ṣaḥīḥ Muslim, Book 12, Hadith 1033</p>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-item text-start">  
+                        <div class="quote-icon">
+                            <img src="frontend/assets/img/quotes-green.png" alt="">
+                        </div>                                        
+                        <p style="color: black;">“Every good word is charity.”</p> 
+                        <div class="testimonial-author">
+                            <p>Prophet Muhammad PBUH | Ṣaḥīḥ al-Bukhārī, Book 56, Hadith 759; Ṣaḥīḥ Muslim, Book 12, Hadith 1009</p>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-item text-start">  
+                        <div class="quote-icon">
+                            <img src="frontend/assets/img/quotes-green.png" alt="">
+                        </div>                                        
+                        <p style="color: black;">“Removing a harmful thing from the road is charity.”</p> 
+                        <div class="testimonial-author">
+                            <p>Prophet Muhammad PBUH | Ṣaḥīḥ al-Bukhārī, Book 46, Hadith 748; Ṣaḥīḥ Muslim, Book 12, Hadith 1009</p>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-item text-start">  
+                        <div class="quote-icon">
+                            <img src="frontend/assets/img/quotes-green.png" alt="">
+                        </div>                                        
+                        <p style="color: black;">“Smiling at your brother is charity.”</p> 
+                        <div class="testimonial-author">
+                            <p>Prophet Muhammad PBUH | Jāmi‘ al-Tirmidhī, Vol. 3, Book 8, Hadith 1956</p>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-item text-start">  
+                        <div class="quote-icon">
+                            <img src="frontend/assets/img/quotes-green.png" alt="">
+                        </div>                                        
+                        <p style="color: black;">“Whoever builds a mosque for Allah, Allah will build for him a house in Paradise.”</p> 
+                        <div class="testimonial-author">
+                            <p>Prophet Muhammad PBUH | Ṣaḥīḥ al-Bukhārī, Book 8, Hadith 441; Ṣaḥīḥ Muslim, Book 4, Hadith 1085</p>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-item text-start">  
+                        <div class="quote-icon">
+                            <img src="frontend/assets/img/quotes-green.png" alt="">
+                        </div>                                        
+                        <p style="color: black;">“Whoever gives in charity the equivalent of a date from lawful earnings… Allah accepts it with His right hand and nurtures it…”</p> 
+                        <div class="testimonial-author">
+                            <p>Prophet Muhammad PBUH | Ṣaḥīḥ al-Bukhārī, Book 24, Hadith 491; Ṣaḥīḥ Muslim, Book 12, Hadith 1014</p>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-item text-start">  
+                        <div class="quote-icon">
+                            <img src="frontend/assets/img/quotes-green.png" alt="">
+                        </div>                                        
+                        <p style="color: black;">“The most beloved of deeds to Allah are those that are continuous, even if small.”</p> 
+                        <div class="testimonial-author">
+                            <p>Prophet Muhammad PBUH | Ṣaḥīḥ al-Bukhārī, Book 76, Hadith 472; Ṣaḥīḥ Muslim, Book 6, Hadith 783</p>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-item text-start">  
+                        <div class="quote-icon">
+                            <img src="frontend/assets/img/quotes-green.png" alt="">
+                        </div>                                        
+                        <p style="color: black;">“Charity given secretly extinguishes the anger of the Lord.”</p> 
+                        <div class="testimonial-author">
+                            <p>Prophet Muhammad PBUH | Sunan al-Kubrā (al-Bayhaqī), Vol. 3, p. 298; also graded ḥasan by al-Albānī</p>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-item text-start">  
+                        <div class="quote-icon">
+                            <img src="frontend/assets/img/quotes-green.png" alt="">
+                        </div>                                        
+                        <p style="color: black;">“Every act of kindness is charity.”</p> 
+                        <div class="testimonial-author">
+                            <p>Prophet Muhammad PBUH | Ṣaḥīḥ Muslim, Book 12, Hadith 1009</p>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-item text-start">  
+                        <div class="quote-icon">
+                            <img src="frontend/assets/img/quotes-green.png" alt="">
+                        </div>                                        
+                        <p style="color: black;">“If one gives in charity what equals one date from honest earnings… Allah will accept it with His right hand and cause it to increase…”</p> 
+                        <div class="testimonial-author">
+                            <p>Prophet Muhammad PBUH | Ṣaḥīḥ al-Bukhārī, Book 24, Hadith 491; Ṣaḥīḥ Muslim, Book 12, Hadith 1014</p>
+                        </div>
+                    </div>
+                </div>
+            </div>           
+        </div>
+    </div>
+    <!-- Feature Section -->
+    <div id="feature-2" class="feature-area gray-bg section-padding pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-4 pt-0 pb-50">
+                    <div class="section-title text-low">
+                        <h2 style="text-transform: uppercase;">Your Contributions At Work</h2>
+                    </div>
+                </div>
+                  <div class="col-xl-4 col-lg-4 col-md-4 wow fadeInUp animated" data-wow-delay=".2s" style="display:flex; flex-direction:column;">
+    <div class="single-feature-item" style="flex:1; display:flex; flex-direction:column;">
+        <div class="feature-content" style="flex:1; display:flex; flex-direction:column;">
+
+            <!-- Video start -->
+            <video autoplay muted loop playsinline class="d-block w-100" style="flex:1; height:100%; object-fit:cover;">
+                <source src="frontend/assets/img/WhatsApp Video 2025-09-02 at 8.41.59 AM.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <!-- Video end -->
+
+            <h5 style="font-weight: 600;margin-top:20px;">IN SUMMARY</h5>
+            <h5>
+                67+ Years of Dedicated Service,<br>
+                In Education, Entrepreneurship, Community Projects and General Assistance.
+            </h5>
+            <p style="text-transform: uppercase; color: #fff; font-weight: 500; padding: 18px 20px;width: 100%;" class="theme-btn">
+                Families: 58,238 | Donated: LKR 1,196.6 Mn
+            </p>
+
+        </div>
+    </div>
+</div>
+
+                <div class="col-xl-4 col-lg-4 col-md-4 wow fadeInUp animated" data-wow-delay=".4s">
+                    <div class="single-feature-item">
+                        <div class="feature-content">
+                                <!--Carousel 2 start-->
+                                <div class="carousel slide carousel-fade" id="officeCarousel2"
+                                data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active"
+                                        >
+                                        <img src="frontend/assets/img/slider/cbf-general relief.jpg"
+                                            class="d-block w-60" alt="GENERAL ASSISTANCE">
+                                    </div>
+                                    <div class="carousel-item"
+                                        >
+                                        <img src="frontend/assets/img/slider/wheel-chair.jpg"
+                                            class="d-block w-60" alt="GENERAL ASSISTANCE">
+                                    </div>
+                                    <div class="carousel-item"
+                                        >
+                                        <img src="frontend/assets/img/slider/cbf-sewing-machine.jpg"
+                                            class="d-block w-60" alt="GENERAL ASSISTANCE">
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                                <!--Carousel 2 end-->
+                            <h5 style="font-weight: 600;margin-top:20px;">GENERAL ASSISTANCE</h5>
+                            <h5>COVID-19 / Emergency, Distress, Marriage Assistance, Orphan Care, Madrassas,
+                                Wheelchairs, Ramazan Food Packs, etc.</h5>
+                            <p style="text-transform: uppercase; color: #fff; font-weight: 500; padding: 18px 20px;width: 100%;" class="theme-btn">Families: 40,453 | Donated: LKR 426.8 Mn</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 wow fadeInUp animated" data-wow-delay=".6s">
+                    <div class="single-feature-item">
+                        <div class="feature-content">
+                        
+                                <!--Carousel 3 start-->
+                                <div class="carousel slide carousel-fade" id="officeCarousel3"
+                                data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active"
+                                        >
+                                        <img src="frontendassets/img/slider/cbf-edu-1.jpg"
+                                            class="d-block w-60" alt="Education">
+                                    </div>
+                                    <div class="carousel-item"
+                                        >
+                                        <img src="frontend/assets/img/slider/cbf-edu-2.jpg"
+                                            class="d-block w-60" alt="Education">
+                                    </div>
+                                    <div class="carousel-item"
+                                        >
+                                        <img src="frontend/assets/img/slider/cbf-edu-3.jpg"
+                                            class="d-block w-60" alt="Education">
+                                    </div>
+                                     <div class="carousel-item"
+                                        >
+                                        <img src="frontend/assets/img/slider/cbf-edu-4.jpg"
+                                            class="d-block w-60" alt="Education">
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                                <!--Carousel 3 end-->
+                            <h5 style="font-weight: 600;margin-top:20px;">EDUCATION</h5>
+                            <h5>University and Advance Level Scholarships, Special Educational Sponsorships,
+                                Donation of Computers, Vocational Training, etc.</h5>
+                            <p style="text-transform: uppercase; color: #fff; font-weight: 500; padding: 18px 20px;width: 100%;" class="theme-btn">Students: 8,773 | Donated: LKR 360.7 Mn</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 wow fadeInUp animated pt-20" data-wow-delay=".4s">
+                    <div class="single-feature-item">
+                        <div class="feature-content">
+                            
+                                <!--Carousel 4 start-->
+                                <div class="carousel slide carousel-fade" id="officeCarousel4"
+                                data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active"
+                                        >
+                                        <img src="frontend/assets/img/slider/cbf-entrepreneurship-1.jpg"
+                                            class="d-block w-60" alt="entrepreneurship">
+                                    </div>
+                                    <div class="carousel-item"
+                                        >
+                                        <img src="frontend/assets/img/slider/cbf-entrepreneurship-2.jpg"
+                                            class="d-block w-60" alt="entrepreneurship">
+                                    </div>
+                                    <div class="carousel-item"
+                                        >
+                                        <img src="frontend/assets/img/slider/cbf-entrepreneurship-3.jpg"
+                                            class="d-block w-60" alt="entrepreneurship">
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                                <!--Carousel 4 end-->
+                            <h5 style="font-weight: 600;margin-top:20px;">ENTREPRENEURSHIP</h5>
+                            <h5>Village, Urban, Self-employment, Sewing Machines, Juki Machines, Livelihood Projects,
+                                Qard Hasana</h5>
+                            <p style="text-transform: uppercase; color: #fff; font-weight: 500; padding: 18px 20px;width: 100%;" class="theme-btn">Families: 9,010 | Donated: LKR 489.1 Mn</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 wow fadeInUp animated pt-20" data-wow-delay=".4s">
+                    <div class="single-feature-item">
+                        <div class="feature-content">
+                                <!--Carousel 5 start-->
+                                <div class="carousel slide carousel-fade" id="officeCarousel5"
+                                data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active"
+                                        >
+                                        <img src="frontend/assets/img/slider/cbf-community-1.jpg"
+                                            class="d-block w-60" alt="community projects">
+                                    </div>
+                                    <div class="carousel-item"
+                                        >
+                                        <img src="frontend/assets/img/slider/cbf-community-2.jpg"
+                                            class="d-block w-60" alt="community projects">
+                                    </div>
+                                    <div class="carousel-item"
+                                        >
+                                        <img src="frontend/assets/img/slider/cbf-community-3.jpg"
+                                            class="d-block w-60" alt="community projects">
+                                    </div>
+                                    <div class="carousel-item"
+                                        >
+                                        <img src="frontend/assets/img/slider/cbf-community-4.jpg"
+                                            class="d-block w-60" alt="community projects">
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                                <!--Carousel 5 end-->
+                            <h5 style="font-weight: 600;margin-top:20px;">COMMUNITY PROJECTS</h5>
+                            <h5>Deep Wells, Community Centers, Prayer Rooms, Tsunami
+                                Assistance, Computer and Sewing Classes, etc.</h5>
+                            <p style="text-transform: uppercase; color: #fff; font-weight: 500; padding: 18px 80px;width: 100%;" class="theme-btn">Donated: LKR 44.8 Mn</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script>
+    var officeCarousel = new bootstrap.Carousel('#officeCarousel1', {
+        interval: 3000 // Time in milliseconds
+    });
+
+    var officeCarousel = new bootstrap.Carousel('#officeCarousel2', {
+        interval: 3000 // Time in milliseconds
+    });
+
+    var officeCarousel = new bootstrap.Carousel('#officeCarousel3', {
+        interval: 3000 // Time in milliseconds
+    });
+
+    var officeCarousel = new bootstrap.Carousel('#officeCarousel4', {
+        interval: 3000 // Time in milliseconds
+    });
+
+    var officeCarousel = new bootstrap.Carousel('#officeCarousel5', {
+        interval: 3000 // Time in milliseconds
+    });
+</script>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Select all carousels with the class or ID
+        const carousels = document.querySelectorAll('.homepage-slides');
+        const animatedClass = 'animated-text';
+        const pBoxClass = 'p-box';
+
+        carousels.forEach((carousel) => {
+            // Function to reset and reapply the animation class
+            function resetAnimation(slide) {
+                // Reset heading animation
+                const animatedElements = slide.querySelectorAll(`.${animatedClass}`);
+                animatedElements.forEach((element) => {
+                    element.classList.remove(animatedClass);
+                    void element.offsetWidth; // Trigger reflow
+                    element.classList.add(animatedClass);
+                });
+
+                // Reset p-box animation
+                const pBoxes = slide.querySelectorAll(`.${pBoxClass}`);
+                pBoxes.forEach((element) => {
+                    element.classList.remove(pBoxClass);
+                    void element.offsetWidth; // Trigger reflow
+                    element.classList.add(pBoxClass);
+                });
+            }
+
+            // Attach event listener to reset animations when slide changes
+            $(carousel).on('changed.owl.carousel', function (event) {
+                const slides = carousel.querySelectorAll('.single-slide-item');
+                const activeIndex = event.item.index;
+
+                slides.forEach((slide, index) => {
+                    if (index === activeIndex) {
+                        resetAnimation(slide);
+                    }
+                });
+            });
+        });
+    });
+
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        $(".client-wrap").owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true, // Enables navigation
+            navText: ["❮", "❯"], // Custom navigation text
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 5
+                }
+            }
+        });
+    });
+
+</script>
+
+
+    <!-- Process Section  -->
+    <div id="process-2" class="process-section bg-cover section-padding pt-150 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-7 col-lg-4">
+                    <div class="section-title text-up">
+                        <h2>OUR FUNDAMENTAL PRINCIPALS</h2>
+                    </div>
+                </div>
+                <!--<div class="col-xl-3 col-lg-3"></div>-->
+                <div class="col-xl-5 col-lg-5">
+                    <div class="right-content text-lg-end">
+                        <p  style="color: #000;">Ceylon Baithulmal Fund operates on some fundamental principles that
+                            define its ethical and operational standards:</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row gx-0 mt-30">
+                <div class="col-xl-4 col-lg-4 wow fadeInUp animated" data-wow-delay="200ms">
+                    <div class="single-process-item">
+                        <div class="process-num">
+                            <!--<h2>01<i class="las la-arrow-right"></i></h2>-->
+                            <img src="frontend/assets/img/icon/ceylon-baithulmal-icons-transparency.gif"
+                                style="height: 75px; width: 75px;" />
+                        </div>
+                        <h4>Transparency </h4>
+                        <p style="color: #000;">Audited accounts are maintained for all funds, ensuring accountability since 1957.</p>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 offset-xl-0 offset-lg-0 wow fadeInUp animated" data-wow-delay="400ms">
+                    <div class="single-process-item">
+                        <div class="process-num">
+                            <img src="frontend/assets/img/icon/ceylon-baithulmal-icons-margin-free.gif"
+                                style="height: 75px; width: 75px;" />
+                        </div>
+                        <h4>Margin-Free</h4>
+                        <p style="color: #000;">100% of Zakat funds are distributed to the poor and underprivileged without deductions.</p>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 wow fadeInUp animated" data-wow-delay="600ms">
+                    <div class="single-process-item">
+                        <div class="process-num">
+                            <img src="frontend/assets/img/icon/ceylon-baithulmal-icons-shariya-compliance.gif"
+                                style="height: 75px; width: 75px;" />
+                        </div>
+                        <h4>Sharia Compliance</h4>
+                        <p  style="color: #000;">All operations are reviewed by a Sharia Board to ensure alignment with Islamic principles.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row gx-0">
+               
+                <div class="col-xl-4 col-lg-4 wow fadeInUp animated" data-wow-delay="200ms">
+                    <div class="single-process-item">
+                        <div class="process-num">
+                            <img src="frontend/assets/img/icon/ceylon-baithulmal-icons-impartial.gif"
+                                style="height: 75px; width: 75px;" />
+                        </div>
+                        <h4>Impartiality</h4>
+                        <p  style="color: #000;">Standard procedures ensure fair evaluation and eligibility assessments for fund disbursement.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 wow fadeInUp animated" data-wow-delay="400ms">
+                    <div class="single-process-item">
+                        <div class="process-num">
+                            <img src="frontend/assets/img/icon/ceylon-baithulmal-icons-zero-risk.gif"
+                                style="height: 75px; width: 75px;" />
+                        </div>
+                        <h4>Zero Risk</h4>
+                        <p style="color: #000;">Financial schemes are designed to minimize risk for all involved parties.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonial Section  -->
+    <div class="testimonial-section section-padding pt-0 pb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4">
+                    <div class="section-title text-low">
+                        <h2>About <br>- Zakat </h2>
+                        <div class="hero-btn mt-40 wow fadeInUp animated" data-wow-delay="500ms">
+                            <a href="about-zakat.html" class="theme-btn mr-40">About Zakat</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-8 col-lg-8">
+                    <div class="testimonial-wrapper owl-carousel">
+                        <div class="single-testimonial-item">
+                            <div class="quote-icon">
+                                <img src="frontend/assets/img/straight-quotes-green.png" alt="">
+                            </div>
+                            <div class="testimonial-content">
+                                <p>“Spend (on charity), O son of
+                                    Adam, and I shall spend on you.”</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <!-- <img src="assets/img/testimonial/1-1.jpg" alt="">-->
+                                <h6 class="text-black">Prophet Muhammad PBUH<span></span></h6>
+                            </div>
+
+                        </div>
+                        <div class="single-testimonial-item">
+                            <div class="quote-icon">
+                                <img src="frontend/assets/img/straight-quotes-green.png" alt="">
+                            </div>
+                            <div class="testimonial-content">
+                                <p>The Charity You Give Will be Your Shade on the Day of Judgement </p>
+                            </div>
+                            <div class="testimonial-author">
+                                <!--<img src="assets/img/testimonial/1-2.jpg" alt="">-->
+                                <h6 class="text-black">Prophet Muhammad PBUH<span></span></h6>
+                            </div>
+
+                        </div>
+                        <div class="single-testimonial-item">
+                            <div class="quote-icon">
+                                <img src="frontend/assets/img/straight-quotes-green.png" alt="">
+                            </div>
+                            <div class="testimonial-content">
+                                <p>Save Yourself from Hellfire Even by Giving a Half Date Fruit in Charity </p>
+                            </div>
+                            <div class="testimonial-author">
+                                <!--<img src="assets/img/testimonial/1-2.jpg" alt="">-->
+                                <h6 class="text-black">Prophet Muhammad PBUH<span></span></h6>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- About Section  -->
+
+
+    <!-- Project Section -->
+
+
+    <!-- Process Section -->
+
+    <!-- Team Section  -->
+
+
+    <!-- Testimonial Section -->
+
+    <!-- Clients Section -->
+
+
+    <!-- Blog Section -->
+  <div class="blog-section gray-bg section-padding pb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-7 col-lg-8">
+                <div class="section-title">
+                    <h6>Read Articles</h6>
+                    <h2>Latest News</h2>
+                </div>
+            </div>
+            <div class="col-xl-5 col-lg-4">
+                <div class="right-content text-lg-end">
+                    <p style="color: #000;">
+                        As the complexity of buildings to increase, the field of architecture became multi-disciplinary.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-40" id="latest-news-container"></div>
+        <div class="row mt-4">
+    <div class="col-12 text-center">
+        <a href="news.html"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="btn"
+           style="background-color: #92BC13; color: #fff; padding: 10px 25px; font-weight: 600; border-radius: 5px; text-decoration: none;">
+           More News
+        </a>
+    </div>
+</div>
+
+    </div>
+</div>
+<div id="event-strip" style="
+    width: 100%;
+    background: #92BC13;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    padding: 12px;
+    font-size: 16px;
+    display: none;">
+</div>
+<div style="width: 100%; height: 400px;">
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.9946776559655!2d79.8545049!3d6.891238899999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25bf1dd5d1201%3A0xf3d3bba79bad1e0a!2sCeylon%20Baithulmal%20Fund!5e0!3m2!1sen!2slk!4v1756868335403!5m2!1sen!2slk" 
+    width="100%" 
+    height="100%" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+    <!-- Footer Area -->
+    <footer class="footer-area">
+        <div class="container">
+            <div class="footer-up">
+                <div class="row gy-5">
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <img src="frontendassets/img/about/white-logo.png" />
+                        <p style="color: white;">
+                            Ceylon Baithulmal Fund upholds transparency, margin-free operations, Sharia compliance,
+                            impartiality, and zero risk,
+                            ensuring ethical financial practices since 1957.
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5>Contact Info</h5>
+                        <div class="company-email">
+                            <p>Email:</p>
+                            <a href="mailto:c.baithulmal@gmail.com">c.baithulmal@gmail.com</a>
+                        </div>
+                        <div class="phone-number">
+                            <p>Mon-Fri, 09:00 AM - 05:00 PM</p>
+                            <p>Call us:</p>
+                            <a href="tel:+94112599075">(+94) 11 25 99 075</a><br>
+                            <a href="tel:+94112591254">(+94) 11 25 91 254</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 com-sm-12">
+                        <h5>Explore CBF</h5>
+                        <ul>
+                            <li>
+                                <a href="news.html">News</a>
+                                <a href="projects.html">Projects</a>
+                                <!--<a href="partners.html">Partners</a>-->
+                            </li>
+                        </ul>
+                        <div class="company-email">
+                            <h5>Address</h5>
+                            <a href="https://maps.app.goo.gl/gEYLd5BaCj9ze23B8">Ceylon Baithulmal Fund Inc.<br> 44A, Haig Road, Bambalapitiya, Colombo 4, Sri Lanka.</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-12">
+                        <h5>Follow Us</h5>
+                        <ul>
+                            <li>
+                                <div class="social-area">
+                                    <a href="https://www.youtube.com/@ceylonbaithulmalfund" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+                                    <a href="https://web.facebook.com/ceylonbaithulmal" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+                                    <a href="https://www.instagram.com/ceylonbaithulmal/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                                    <a href="https://x.com/baithulmalfund" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Footer Bottom Area -->
+
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row justify-content-center align-items-center justify-content-center">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <p class="copyright-line">© 2025 Ceylon BaithulMal Fund Inc. All rights reserved.</p>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xs-12 text-md-end">
+                    <p class="privacy">A CSR Contribution By | <a href="https://www.pragicts.com/"
+                            style="color: red; font-size: 14px;">PragICTS</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- back to top start -->
+    <div class="progress-wrap">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
+
+    <!-- Popper JS -->
+    <script src="frontend/assets/js/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="frontend/assets/js/bootstrap.min.js"></script>
+    <!-- Wow JS -->
+    <script src="frontend/assets/js/wow.min.js"></script>
+    <!-- Pure Counter JS -->
+    <script src="frontend/assets/js/pure-counter.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="frontend/assets/js/owl.carousel.min.js"></script>
+    <!-- Slick Slider JS -->
+    <script src="frontend/assets/js/slick.min.js"></script>
+    <!-- Magnific Popup JS -->
+    <script src="frontend/assets/js/magnific-popup.min.js"></script>
+    <!-- Isotope JS -->
+    <script src="frontend/assets/js/isotope-3.0.6-min.js"></script>
+    <!-- Nice Select JS -->
+    <script src="frontend/assets/js/jquery.nice-select.min.js"></script>
+    <!-- Back To Top JS -->
+    <script src="frontend/assets/js/backToTop.js"></script>
+    <!-- Metis Menu JS -->
+    <script src="frontend/assets/js/metismenu.js"></script>
+    <!-- Progress Bar JS -->
+    <script src="frontend/assets/js/jquery.barfiller.js"></script>
+    <!-- Appear JS -->
+    <script src="frontend/assets/js/jquery.appear.min.js"></script>
+    <!-- Odometer JS -->
+    <script src="frontend/assets/js/odometer.min.js"></script>
+    <!-- Main JS -->
+    <script src="frontend/assets/js/main.js"></script>
+    <!-- Developer Info Box -->
+    <div id="developer-info"
+        style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 600px; background-color: #fefefe; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 1000; text-align: center;">
+
+        <!-- Image added on top -->
+        <img src="frontend/assets/img/project/pragicts-logo-1000X1000.png" alt="Developer Logo"
+            style="max-width: 10%; height: auto; margin-bottom: 15px; border-radius: 50%;">
+
+        <h3 style="color: #333; margin-bottom: 15px; font-size: 18px;"><strong>WEBSITE DEVELOPMENT SCORECARD</strong>
+        </h3>
+        <p style="color: #555; font-size: 16px; margin: 5px 0;">Client: Ceylon BaithulMal Fund</p>
+        <p style="color: #555; font-size: 16px; margin: 5px 0;">Project Type: Website Development</p>
+        <p style="color: #555; font-size: 16px; margin: 5px 0;">Project Reference ID : PRAG-SE-WD-BAITHULMAL-01/2025</p>
+        <a style="color: #555; font-size: 16px; margin: 5px 0;" href="https://baithulmal.lk/" target="_blank">Domain:
+            https://baithulmal.lk/</a>
+        <p style="color: #555; font-size: 16px; margin: 5px 0;">Date: 13/01/2025</p>
+        <p style="color: #555; font-size: 16px; margin: 5px 0;">Developer: Miss Fathima Minzah</p>
+        <p style="color: #555; font-size: 16px; margin: 5px 0;">Assigned by: Rizvi Latiff</p>
+        <p style="color: #555; font-size: 16px; margin: 5px 0;">Technology Stack: HTML, JAVA Scripting, Open Graph &
+            Onpage SEO</p>
+        <br><br>
+        <button onclick="document.getElementById('developer-info').style.display='none'"
+            style="position: absolute; bottom: 10px; right: 270px; background: rgb(210, 21, 21); color: white; border: none; border-radius: 4px; padding: 5px 10px; cursor: pointer;">Close</button>
+
+    </div>
+
+    <!-- JavaScript for Alt+P Shortcut -->
+    <script>
+        document.addEventListener("keydown", function (event) {
+            if ((event.altKey || event.ctrlKey) && event.key === "p") { // Checks if Alt+P or Ctrl+P is pressed
+                const devInfo = document.getElementById("developer-info");
+                if (devInfo.style.display === "none") {
+                    devInfo.style.display = "block"; // Show developer info
+                } else {
+                    devInfo.style.display = "none";  // Hide developer info
+                }
+            }
+        });
+
+    </script>
+<script>
+async function fetchLatestNews() {
+    try {
+        const response = await fetch('frontend/assets/data/news.json'); // path to your JSON file
+        let news = await response.json();
+
+        // Sort by ID descending (biggest ID first) and pick first 3
+        news.sort((a, b) => b.id - a.id);
+        const latestNews = news.slice(0, 3);
+
+        const container = document.getElementById('latest-news-container');
+        container.innerHTML = latestNews.map((b, index) => `
+            <div class="col-xl-4 col-lg-4 col-md-6 col-12 wow fadeInUp animated" data-wow-delay="${(index + 1) * 200}ms">
+                <div class="single-blog-item">
+                    <div class="blog-bg">
+                        <img src="${b.img}" alt="${b.title}">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta"><p>${b.category}</p></div>
+                        <h3>
+                            <a href="blog-details.html?id=${b.id}">
+                                ${b.title}
+                            </a>
+                        </h3>
+                        <div class="blog-info">
+                            <div class="blog-author">
+                                <p style="color: #000;">${b.desc}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+
+        // Re-initialize WOW.js for animations
+        new WOW().init();
+
+    } catch (error) {
+        console.error('Failed to load latest news:', error);
+        document.getElementById('latest-news-container').innerHTML = "<p>Unable to load news.</p>";
+    }
+}
+
+// Initialize
+fetchLatestNews();
+</script>
+
+
+
+
+
+
+
+
+
+<!-- Prayer Times Popup -->
+<div id="prayer-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; align-items: center; justify-content: center;">
+  <div style="background: #fff; padding: 20px; border-radius: 10px; width: 400px; max-width: 90%; text-align: center; position: relative;">
+    <h3 style="margin-bottom: 15px; color:#92BC13;">Select Country and City</h3>
+    <select id="country-select">
+      <option value="">-- Choose Country --</option>
+    </select>
+    <select id="city-select" style="display: none;">
+      <option value="">-- Choose City --</option>
+    </select>
+    <div id="prayer-results" style="text-align:center; margin-top: 15px; display:none;">
+      <h5>Prayer Times:</h5>
+      <table id="prayer-table" style="width:100%; border-collapse: collapse;">
+        <thead>
+          <tr>
+            <th style="border: 1px solid #ccc; padding: 8px;">Prayer</th>
+            <th style="border: 1px solid #ccc; padding: 8px;">Time</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <button onclick="closePrayerPopup()" style="margin-top:20px; background: #92BC13; color: #fff; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer;">Close</button>
+  </div>
+</div>
+
+<script>
+  const countrySelect = document.getElementById("country-select");
+  const citySelect = document.getElementById("city-select");
+  const prayerTableBody = document.querySelector("#prayer-table tbody");
+  const prayerResults = document.getElementById("prayer-results");
+
+  async function fetchCountries() {
+    try {
+      const response = await fetch('https://countriesnow.space/api/v0.1/countries');
+      const data = await response.json();
+      const countries = data.data;
+
+      countries.forEach(country => {
+        const option = document.createElement("option");
+        option.value = country.country;
+        option.textContent = country.country;
+        countrySelect.appendChild(option);
+      });
+    } catch (error) {
+      console.error("Error fetching countries:", error);
+    }
+  }
+
+  async function fetchCities(country) {
+    try {
+      const response = await fetch(`https://countriesnow.space/api/v0.1/countries/cities`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ country })
+      });
+      const data = await response.json();
+      let cities = data.data;
+      cities.sort((a, b) => a.localeCompare(b));
+
+      citySelect.innerHTML = '<option value="">-- Choose City --</option>';
+      cities.forEach(city => {
+        const option = document.createElement("option");
+        option.value = city;
+        option.textContent = city;
+        citySelect.appendChild(option);
+      });
+      citySelect.style.display = 'inline-block';
+    } catch (error) {
+      console.error("Error fetching cities:", error);
+    }
+  }
+
+  async function fetchPrayerTimes(city, country) {
+    const today = new Date();
+    const currentDate = today.toISOString().split('T')[0];
+
+    const apiUrl = `https://api.aladhan.com/v1/timingsByAddress/${currentDate}?address=${encodeURIComponent(city + ',' + country)}&method=1`;
+
+    try {
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+
+      if (data.code === 200) {
+        const timings = data.data.timings;
+        prayerTableBody.innerHTML = '';
+
+        const selectedPrayers = ["Fajr", "Sunrise", "Dhuhr", "Asr", "Sunset", "Maghrib", "Isha"];
+        selectedPrayers.forEach(prayer => {
+          const tr = document.createElement("tr");
+          const tdPrayer = document.createElement("td");
+          tdPrayer.textContent = prayer;
+          tdPrayer.style.border = "1px solid #ccc";
+          tdPrayer.style.padding = "8px";
+          const tdTime = document.createElement("td");
+          tdTime.textContent = timings[prayer];
+          tdTime.style.border = "1px solid #ccc";
+          tdTime.style.padding = "8px";
+          tr.appendChild(tdPrayer);
+          tr.appendChild(tdTime);
+          prayerTableBody.appendChild(tr);
+        });
+
+        prayerResults.style.display = 'block';
+      } else {
+        alert("Could not fetch prayer times. Try again.");
+      }
+    } catch (error) {
+      console.error("Error fetching prayer times:", error);
+      alert("Error fetching prayer times.");
+    }
+  }
+
+  countrySelect.addEventListener("change", () => {
+    const country = countrySelect.value;
+    if (country) {
+      fetchCities(country);
+    } else {
+      citySelect.style.display = 'none';
+      prayerResults.style.display = 'none';
+    }
+  });
+
+  citySelect.addEventListener("change", () => {
+    const city = citySelect.value;
+    const country = countrySelect.value;
+    if (city && country) {
+      fetchPrayerTimes(city, country);
+    }
+  });
+
+  document.querySelectorAll('.fa-clock').forEach(icon => {
+    icon.parentElement.addEventListener("click", function (e) {
+      e.preventDefault();
+      document.getElementById("prayer-popup").style.display = "flex";
+    });
+  });
+
+  function closePrayerPopup() {
+    document.getElementById("prayer-popup").style.display = "none";
+  }
+
+  fetchCountries();
+
+
+  
+</script>
+<script>
+    $(".testimonial-carousel1").owlCarousel({
+  items: 1,
+  dots: false,
+  nav: false,
+  loop: true,
+  autoplay: true,
+  autoplayTimeout: 5000,
+  smartSpeed: 3000,
+  slideSpeed: 300,
+  margin: 30,
+  responsive: {
+    0: {
+      items: 1,
+      nav: false,
+      dots: false,
+    },
+    600: {
+      items: 1,
+      nav: false,
+      dots: false,
+    },
+    768: {
+      items: 1, // ✅ was 2
+      nav: false,
+      dots: false,
+    },
+    1100: {
+      items: 1, // ✅ was 3
+      nav: false,
+      dots: false,
+    },
+  },
+  navText: [
+    "<i class='las la-arrow-left'></i>",
+    "<i class='las la-arrow-right'></i>",
+  ],
+});
+
+</script>
+
+<script>
+const islamicEvents = [
+  { month: 1, day: 1, event: "Islamic New Year (1 Muharram)" },
+  { month: 1, day: 10, event: "Day of Ashura" },
+  { month: 3, day: 12, event: "Mawlid (Prophet Muhammad's Birthday)" },
+  { month: 7, day: 27, event: "Isra and Mi'raj" },
+  { month: 9, day: 1, event: "Start of Ramadan" },
+  { month: 9, day: 27, event: "Laylat al-Qadr" },
+  { month: 10, day: 1, event: "Eid al-Fitr" },
+  { month: 12, day: 9, event: "Day of Arafah" },
+  { month: 12, day: 10, event: "Eid al-Adha" },
+  { month: 12, day: 29, event: "Islamic Calendar Year End / Dhu al-Hijjah ends" }
+];
+
+// ✅ Sri Lanka correction (API is 1 day ahead)
+const HIJRI_OFFSET = -1;
+
+// ⚡ Toggle this to true when testing
+const TEST_MODE = false;
+
+async function checkTodayEvent() {
+  const strip = document.getElementById("event-strip");
+
+  if (TEST_MODE) {
+    strip.textContent = "Today’s Islamic Event: Mawlid (Prophet Muhammad's Birthday)";
+    strip.style.background = "#92BC13";
+    strip.style.display = "block";
+    return;
+  }
+
+  // Get today in Sri Lanka time zone
+  const todaySL = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Colombo" }));
+  const dd = todaySL.getDate();
+  const mm = todaySL.getMonth() + 1;
+  const yyyy = todaySL.getFullYear();
+
+  try {
+    const apiUrl = `https://api.aladhan.com/v1/gToH?date=${dd}-${mm}-${yyyy}&latitude=6.9271&longitude=79.8612&method=2`;
+    const res = await fetch(apiUrl);
+    const data = await res.json();
+
+    if (data.code === 200) {
+      let hijriDay = parseInt(data.data.hijri.day, 10) + HIJRI_OFFSET;
+      let hijriMonth = data.data.hijri.month.number;
+      let hijriYear = parseInt(data.data.hijri.year, 10);
+
+      // Handle underflow
+      if (hijriDay < 1) {
+        hijriDay = 30; // assume 30 days for simplicity
+        hijriMonth--;
+        if (hijriMonth < 1) {
+          hijriMonth = 12;
+          hijriYear--;
+        }
+      }
+
+      // ✅ Match correctly with our events list
+      const todayEvent = islamicEvents.find(e => e.day === hijriDay && e.month === hijriMonth);
+
+      if (todayEvent) {
+        strip.textContent = `Today’s Islamic Event: ${todayEvent.event}`;
+        strip.style.background = "#92BC13";
+        strip.style.display = "block";
+      } else {
+        strip.textContent = "No Islamic event today";
+        strip.style.background = "#555";
+        strip.style.display = "block";
+      }
+    }
+  } catch (err) {
+    console.error("Error fetching Hijri date:", err);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", checkTodayEvent);
+</script>
+
+
+</body>
+
+</html>

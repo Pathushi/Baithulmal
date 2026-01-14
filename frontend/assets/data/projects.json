@@ -1,0 +1,185 @@
+{
+  "tabs": [
+    {
+      "id": "general",
+      "title": "General",
+      "projects": [
+        {
+          "title": "Matrimonial Assistance",
+          "image": "assets/img/project/cbf-metro-1.jpg",
+          "images": [
+            "assets/img/project/cbf-metro-1.jpg",
+            "assets/img/project/cbf-metro-2.jpg",
+            "assets/img/project/cbf-metro-3.jpg"
+          ],
+          "link": "project-details.html",
+          "content": "<p>CBF allocates a sum of Rs. 400,000/- per month in order to assist young women from under-privileged homes in the process of their matrimonial arrangements. The monthly target in relation to this initiative is 20. A maximum sum of Rs. 20,000/- is paid to every applicant, however candidates are required to register their Nikah (Muslim Religious Ceremony under Islamic Law) with CBF at least 2-3 months ahead of their respective arranged dates of marriage.</p><p>All applications are reviewed by an Executive Panel and submitted to the Committee of Management for final approval.</p><div style='text-align: center;'><img src='assets/img/about/cbf-project-1.jpg' style='max-width: 80%; height: auto;'></div>"
+        },
+        {
+          "title": "Qard Hasana Loans",
+          "image": "assets/img/project/cbf-qard-1.jpg",
+          "link": "project-details.html",
+           "images": [
+            "assets/img/project/cbf-qard-1.jpg",
+            "assets/img/project/cbf-qard-2.jpg",
+            "assets/img/project/cbf-qard-3.jpg"
+          ],
+          "content": "<p>This scheme, which as indicated in its title ‘Qard Hasan’ translates as ‘Benevolent Loan’, is an Islamic finance title referring to an interest free loan. In simple terms, the borrower is obliged to repay the principal sum of the loan without interest, mark-up or a share in the business for which the loan was utilized.</p><p>CBF offers Qard Hasan loans for sums ranging from Rs. 25,000/- to Rs. 100,000/-</p><p>CBF accepts gold jewellery as collateral at a rate of Rs. 50,000/- per sovereign. <strong>*</strong></p><p>Repayment schemes usually endure a period of 10 months in equal installments.</p><p><strong>*Values indicated for gold sovereign are at 22 carats.</strong></p>"
+        },
+        {
+          "title": "Emergency Relief",
+          "image": "assets/img/project/Covid-19-Relief-3-scaled.jpg",
+          "link": "project-details.html",
+          "images": [
+            "assets/img/project/matrimonial-assistance.jpg",
+            "assets/img/project/qard-hasana-loans.jpg",
+            "assets/img/project/Covid-19-Relief-3-scaled.jpg"
+          ],
+          "content": "<p>CBF takes great pride in its ability to deploy relief aid to communities in dire need of assistance, particularly in times of strife such as conflicts, natural disasters and pandemics.</p><p>In 2021, CBF initiated an Emergency Relief Programme at the height of the 3rd Covid-19 wave. Through dedication and perseverance, CBF was able to render relief assistance at a value of Rs. 9.37M to a total of 3083 families from the four corners of Sri Lanka, namely:</p><ol><li>Colombo</li><li>Badulla</li><li>Kandy</li><li>Hambantota</li><li>Matara</li><li>Batticaloa</li></ol>"
+        }
+      ]
+    },
+    {
+      "id": "Education",
+      "title": "Education",
+      "projects": [
+        {
+          "title": "University Scholarship Awards 2025",
+          "image": "assets/img/project/cbf-u2025-1-thumb.jpg",
+          "images": [
+            "assets/img/project/cbf-u2025-1.jpg",
+            "assets/img/project/cbf-u2025-2.jpg",
+            "assets/img/project/cbf-u2025-3.jpg"
+          ],
+          "link": "project-details.html",
+          "content": "University Scholarship Awards 2025 at S.S. Issadeen Auditorium - Ceylon Baithulmal Fund in collaboration with Muslim Hands UK. Cheif Guest was Mr. Faiz Mustafa - Presidents Counsel, Chancellor of the South Eastern University"
+        },
+
+        {
+          "title": "University Scholarships Awards 2024",
+          "image": "assets/img/project/cbf-scholarship-1.jpg",
+          "images": [
+            "assets/img/project/cbf-scholarship-1.jpg",
+            "assets/img/project/cbf-scholarship-2.jpg",
+            "assets/img/project/cbf-scholarship-3.jpg"
+          ],
+          "link": "project-details.html",
+          "content": "University Scholarships Awards 2024 held at S S Issadeen Auditorium - CBF. Chief Guest Mr. Mohammed Thahir Laffar - Court of Appeal Judge"
+        },
+        {
+          "title": "Advanced Level Scholarship Awards 2024",
+          "image": "assets/img/project/cbf-al-1.jpg",
+          "images": [
+            "assets/img/project/cbf-al-1.jpg",
+            "assets/img/project/cbf-al-2.jpg",
+            "assets/img/project/cbf-al-3.jpg"
+          ],
+          "link": "project-details.html",
+          "content": "Advanced Level Scholarship Awards 2024 at S.S. Issadeen Auditorium - Ceylon Baithulmal Fund. Chief Guest was A A M Thassim, Deputy Governor, Central Bank of Sri Lanka."
+        }
+      ]
+    },
+    {
+      "id": "entrepreneurship",
+      "title": "Entrepreneurship",
+      "projects": [
+        {
+          "title": "Village & Urban Program",
+          "image": "assets/img/project/cbf-urban-1.jpg",
+           "images": [
+            "assets/img/project/cbf-urban-1.jpg",
+            "assets/img/project/cbf-urban-2.jpg",
+            "assets/img/project/cbf-urban-3.jpg"
+          ],
+          "link": "project-details.html",
+          "content": "Urban Development Program at Peer Saibo Street Masjid benefitting more than 125 Self Employment Projects"
+        },
+      {
+          "title": "Juki Machines Fund",
+          "image": "assets/img/project/cbf-juki-1.jpg",
+           "images": [
+            "assets/img/project/cbf-juki-1.jpg",
+            "assets/img/project/cbf-juki-2.jpg",
+            "assets/img/project/cbf-juki-3.jpg"
+          ],
+          "link": "project-details.html",
+          "content": "Distribution of Juki Machines funded by Mountain of Mercy - UK."
+        },
+        {
+          "title": "Sewing Machine Fund",
+          "image": "assets/img/project/cbf-sewing-1.jpg",
+           "images": [
+            "assets/img/project/cbf-sewing-1.jpg",
+            "assets/img/project/cbf-sewing-2.jpg",
+            "assets/img/project/cbf-sewing-3.jpg"
+          ],
+          "link": "project-details.html",
+          "content": "Sewing Machines Distribution at Ceylon Baithulmal Fund Premises"
+        },
+        {
+          "title": "Sewing Machine Fund",
+          "image": "assets/img/project/cbf-sweing2-1.jpg",
+           "images": [
+            "assets/img/project/cbf-sweing2-1.jpg",
+            "assets/img/project/cbf-sweing2-2.jpg",
+            "assets/img/project/cbf-sweing2-3.jpg"
+          ],
+          "link": "project-details.html",
+          "content": "Sewing Machine Distribution at Ceylon Baithulmal Fund Premises"
+        },
+        {
+          "title": "SME & Self-Employement Program",
+          
+          "image": "assets/img/project/cbf-self-1.jpg",
+           "images": [
+            "assets/img/project/cbf-self-1.jpg",
+            "assets/img/project/cbf-self-2.jpg",
+            "assets/img/project/cbf-self-3.jpg"
+          ],
+          "link": "project-details.html",
+          "content": "Self Employment at Ceylon Baithulmal Fund Office"
+        }
+        
+      ]
+    },
+    {
+      "id": "community",
+      "title": "Community Projects",
+      "projects": [
+        
+       
+         {
+          "title": "Deep Water Well and Tank",
+          
+          "image": "assets/img/project/cbf-deepwell-2.jpg",
+           "images": [
+            "assets/img/project/cbf-deepwell-1.jpg",
+            "assets/img/project/cbf-deepwell-2.jpg",
+            "assets/img/project/cbf-deepwell-3.jpg"
+          ],
+          "link": "project-details.html",
+          "content": "Deep Water Well and Tank built for Majeediya Ladies Arabic College in Kaduruwela - Polonnwaruwa"
+        },
+        {
+          "title": "Muhiyiddeen Jumma Masjid",
+          
+          "image": "assets/img/project/cbf-community-2.jpg",
+           "images": [
+            "assets/img/project/cbf-community-2.jpg",
+            "assets/img/project/cbf-community-3.jpg",
+            "assets/img/project/cbf-community-4.jpg"
+          ],
+          "link": "project-details.html",
+          "content": "Muhiyiddeen Jumma Masjid, Alaksapura, Dickwella Facilitated by Ceylon Baithulmal Fund Inc."
+        },
+        {
+          "title": "WELL PROJECT | Well of Hajara | Welpothuwewa Village",
+          "type": "video",
+          "link": "https://www.youtube.com/embed/x8Fh0qIKG8g",
+          "image": ""
+        }
+        
+      ]
+    }
+  ]
+}

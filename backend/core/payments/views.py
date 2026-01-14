@@ -6,6 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 from .models import Payment, FailedPayment
+# stop from changing amount
 from .crypto_utils import encrypt_payment
 
 logger = logging.getLogger(__name__)
@@ -37,7 +38,7 @@ def send_thank_you_email(payment):
     email.send()
 
 
-
+# Django normally blocks requests from external websites for security
 @csrf_exempt
 def create_payment(request):
     if request.method != "POST":
@@ -91,7 +92,7 @@ def create_payment(request):
         "secret_key": settings.WEBXPAY_SECRET,
         "payment": encrypted_payment,
 
-        # REQUIRED FIX (where i got the OTP from WebXPay support)
+        # REQUIRED FIX (where i got the OTP from WebXPay support)- encrytion method identifier
         "enc_method": "JCs3J+6oSz4V0LgE0zi/Bg==",
 
         "cms": "Django",
@@ -99,7 +100,7 @@ def create_payment(request):
         "custom_fields": "",
         "payment_gateway_id": "",
         "callback_id": str(payment.transaction_id),
-        "version": "5.2"
+        "version": "5.2"  # webxpay api version
 }
 
 
@@ -119,28 +120,31 @@ def create_payment(request):
         logger.exception("Create payment error")
         return JsonResponse({"error": str(e)}, status=500)
 
-
+# Django normally blocks requests from external websites for security
 @csrf_exempt
 def payment_callback(request):
     # Support both POST and GET
     data = request.POST if request.POST else request.GET
 
-    print(f"\n--- WEBXPAY CALLBACK DATA: {dict(data)} ---\n")
+    # 1. DEBUG: This is the most important line. 
+    # Check your terminal to see exactly what WebXPay is sending back.
+    print(f"\n--- WEBXPAY CALLBACK DATA RECEIVED: {dict(data)} ---\n")
 
-    # 1. Get the ID (WebXPay sends it as 'order_id')
-    transaction_id = data.get("order_id")
-
-    # 2. Get the Status ("00" is success)
+    # 2. Extract ID: Check 'order_id' first, then 'callback_id' (which you sent in create_payment)
+    raw_id = data.get("order_id") or data.get("callback_id")
+    
+    # 3. FIX: Strip whitespace to prevent lookup failures
+    transaction_id = raw_id.strip() if raw_id else None
     status_code = data.get("status_code")
 
     if not transaction_id:
-        return HttpResponse("Invalid callback data: Missing order_id", status=400)
+        return HttpResponse("Invalid callback data: Missing transaction identification", status=400)
 
     try:
-        
-        payment = Payment.objects.get(transaction_id=transaction_id)
+        # 4. FIX: Use __iexact for case-insensitive matching
+        payment = Payment.objects.get(transaction_id__iexact=transaction_id)
 
-        # 3. Check Status
+        # 5. Check Status ("00" is success for WebXPay)
         if status_code == "00":
             payment.status = "Success"
             payment.save()
@@ -151,9 +155,9 @@ def payment_callback(request):
 
             return HttpResponse("""
                 <div style="text-align:center; padding:50px; font-family:Arial;">
-                    <h1 style="color:green;">Alhamdulillah! Payment Successful.</h1>
-                    <p>May Allah reward you.</p>
-                    <a href="/" style="background:#28a745; color:white; padding:10px 20px; text-decoration:none; border-radius:5px;">Return to Home</a>
+                    <h1 style="color:#92BC13;">Alhamdulillah! Payment Successful.</h1>
+                    <p>May Allah reward you for your donation.</p>
+                    <a href="/" style="background:#92BC13; color:white; padding:10px 20px; text-decoration:none; border-radius:5px;">Return to Home</a>
                 </div>
             """)
         else:
@@ -167,13 +171,14 @@ def payment_callback(request):
             return HttpResponse("""
                 <div style="text-align:center; padding:50px; font-family:Arial;">
                     <h1 style="color:red;">Payment Failed</h1>
-                    <p>Please try again.</p>
+                    <p>Please try again or contact support if the issue persists.</p>
                     <a href="/" style="background:#dc3545; color:white; padding:10px 20px; text-decoration:none; border-radius:5px;">Try Again</a>
                 </div>
             """)
 
     except Payment.DoesNotExist:
-        return HttpResponse(f"Payment ID {transaction_id} not found", status=404)
+        # This triggers the error you've been seeing
+        return HttpResponse(f"Payment ID {transaction_id} not found in our records.", status=404)
     except Exception as e:
         logger.exception("Callback error")
-        return HttpResponse(str(e), status=500)
+        return HttpResponse("An internal error occurred.", status=500)
