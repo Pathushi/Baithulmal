@@ -8,26 +8,80 @@ from django.core.mail import EmailMultiAlternatives
 from .models import Payment, FailedPayment
 # stop from changing amount
 from .crypto_utils import encrypt_payment
+from django.utils import timezone
+from django.shortcuts import render
 
 logger = logging.getLogger(__name__)
 
-
 def send_thank_you_email(payment):
-    subject = "Thank you for your donation"
+    # Generate Timestamp and Reference No
+    now = timezone.now()
+    date_str = now.strftime('%d/%m/%Y')
+    time_str = now.strftime('%H:%M')
+    timestamp = now.strftime('%Y%m%d%H%M')
+    
+    # Format: CBF-FirstNameLastName-Timestamp
+    full_name_no_spaces = f"{payment.first_name}{payment.last_name}".replace(" ", "")
+    ref_no = f"CBF-{full_name_no_spaces}-{timestamp}"
+
+    subject = f"CEYLON BAITHULMAL FUND | YOUR DONATION | {date_str} | {time_str}"
     from_email = settings.EMAIL_HOST_USER
     to_email = [payment.email]
 
-    text_content = f"Dear {payment.first_name},\n\nThank you for your donation of LKR {payment.amount}.\n\nBest regards,\nCeylon Baithulmal Fund"
+    # Professional Text Version
+    text_content = f"""
+Dear Sir/Madam {payment.first_name} {payment.last_name},
 
+Thank you for your valuable donation. 
+Your support helps us serve better and reach more people.
+
+YOUR DONATION DETAILS
+Reference Number: {ref_no}
+Name: {payment.first_name} {payment.last_name}
+Address: {payment.address_line_one}
+Country: {payment.country}
+Email: {payment.email}
+Date | Time: {date_str} | {time_str}
+Amount Donated: LKR {payment.amount}
+
+May Allah reward you and your family.
+
+Ceylon Baithulmal Fund
+https://baithulmal.lk/
+"""
+
+    # Professional HTML Version
     html_content = f"""
     <html>
-      <body style="font-family: Arial; background:#f4f6f8; padding:20px;">
-        <div style="background:#fff; padding:30px; max-width:600px; margin:auto;">
-          <h2>Thank you for your donation!</h2>
-          <p>Dear <strong>{payment.first_name} {payment.last_name}</strong>,</p>
-          <p>You donated <strong>LKR {payment.amount:.2f}</strong>.</p>
-          <p>May Allah reward you.</p>
-          <p><strong>Ceylon Baithulmal Fund</strong></p>
+      <body style="font-family: 'Segoe UI', Arial, sans-serif; color: #333; line-height: 1.6;">
+        <div style="max-width: 600px; margin: auto; border: 1px solid #eee; padding: 20px;">
+          <h2 style="color: #2c3e50; border-bottom: 2px solid #27ae60; padding-bottom: 10px;">
+            CEYLON BAITHULMAL FUND
+          </h2>
+          <p>Dear Sir/Madam <strong>{payment.first_name} {payment.last_name}</strong>,</p>
+          <p>Thank you for your valuable donation. Your support helps us serve better and reach more people.</p>
+          
+          <div style="background: #f9f9f9; padding: 15px; border-radius: 5px; margin: 20px 0;">
+            <h3 style="margin-top: 0; font-size: 16px; color: #27ae60;">YOUR DONATION DETAILS</h3>
+            <table style="width: 100%; font-size: 14px;">
+              <tr><td><strong>Ref No:</strong></td><td>{ref_no}</td></tr>
+              <tr><td><strong>Name:</strong></td><td>{payment.first_name} {payment.last_name}</td></tr>
+              <tr><td><strong>Address:</strong></td><td>{payment.address_line_one}</td></tr>
+              <tr><td><strong>Country:</strong></td><td>{payment.country}</td></tr>
+              <tr><td><strong>Email:</strong></td><td>{payment.email}</td></tr>
+              <tr><td><strong>Date | Time:</strong></td><td>{date_str} | {time_str}</td></tr>
+              <tr><td><strong>Amount:</strong></td><td><strong>LKR {payment.amount:.2f}</strong></td></tr>
+            </table>
+          </div>
+
+          <p><i>May Allah reward you and your family.</i></p>
+          
+          <hr style="border: 0; border-top: 1px solid #eee;" />
+          <p style="font-size: 12px; color: #777;">
+            <strong>Ceylon Baithulmal Fund</strong><br>
+            <a href="https://baithulmal.lk/">baithulmal.lk</a> | c.baithulmal@gmail.com<br>
+            (+94) 11 25 99 075
+          </p>
         </div>
       </body>
     </html>
@@ -35,7 +89,7 @@ def send_thank_you_email(payment):
 
     email = EmailMultiAlternatives(subject, text_content, from_email, to_email)
     email.attach_alternative(html_content, "text/html")
-    email.send()
+    email.send(fail_silently=False)
 
 
 # Django normally blocks requests from external websites for security
@@ -123,17 +177,14 @@ def create_payment(request):
 # Django normally blocks requests from external websites for security
 @csrf_exempt
 def payment_callback(request):
-    # Support both POST and GET
+    # Support both POST and GET data from WebXPay
     data = request.POST if request.POST else request.GET
 
-    # 1. DEBUG: This is the most important line. 
-    # Check your terminal to see exactly what WebXPay is sending back.
+    # DEBUG: View exactly what the gateway is sending back in your server logs
     print(f"\n--- WEBXPAY CALLBACK DATA RECEIVED: {dict(data)} ---\n")
 
-    # 2. Extract ID: Check 'order_id' first, then 'callback_id' (which you sent in create_payment)
+    # Extract ID: Check 'order_id' or 'callback_id'
     raw_id = data.get("order_id") or data.get("callback_id")
-    
-    # 3. FIX: Strip whitespace to prevent lookup failures
     transaction_id = raw_id.strip() if raw_id else None
     status_code = data.get("status_code")
 
@@ -141,46 +192,68 @@ def payment_callback(request):
         return HttpResponse("Invalid callback data: Missing transaction identification", status=400)
 
     try:
-        # 4. FIX: Use __iexact for case-insensitive matching
+        # Case-insensitive lookup of the payment record
         payment = Payment.objects.get(transaction_id__iexact=transaction_id)
-        
-        
 
-        # 5. Check Status ("00" is success for WebXPay)
+        # "00" is the success status code for WebXPay
         if status_code == "00":
             payment.status = "Success"
             payment.save()
+            
+            # Generate the same Ref No used in the professional email
+            timestamp = timezone.now().strftime('%Y%m%d%H%M')
+            full_name = f"{payment.first_name}{payment.last_name}".replace(" ", "")
+            ref_no = f"CBF-{full_name}-{timestamp}"
+
             try:
+                # This uses the working EmailMultiAlternatives logic we set up
                 send_thank_you_email(payment)
             except Exception as e:
-                logger.error(f"Email failed: {e}")
+                logger.error(f"Email failed for {transaction_id}: {e}")
 
-            return HttpResponse("""
-                <div style="text-align:center; padding:50px; font-family:Arial;">
-                    <h1 style="color:#92BC13;">Alhamdulillah! Payment Successful.</h1>
-                    <p>May Allah reward you for your donation.</p>
-                    <a href="/" style="background:#92BC13; color:white; padding:10px 20px; text-decoration:none; border-radius:5px;">Return to Home</a>
+            # --- PROFESSIONAL SUCCESS UI ---
+            return HttpResponse(f"""
+                <div style="font-family: Arial, sans-serif; background-color: #f4f7f6; height: 100vh; display: flex; align-items: center; justify-content: center; margin: 0;">
+                    <div style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; max-width: 400px; width: 90%;">
+                        <div style="width: 70px; height: 70px; background: #92BC13; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 35px;">✓</div>
+                        <h1 style="color: #2c3e50; margin-bottom: 10px;">Alhamdulillah!</h1>
+                        <p style="color: #7f8c8d;">Your donation of <strong>LKR {payment.amount}</strong> was successful.</p>
+                        <div style="background: #f9f9f9; border: 1px dashed #ccc; padding: 15px; margin: 20px 0; border-radius: 10px;">
+                            <span style="font-size: 11px; color: #999; display: block; text-transform: uppercase; letter-spacing: 1px;">Reference Number</span>
+                            <span style="font-weight: bold; color: #2c3e50; font-size: 14px;">{ref_no}</span>
+                        </div>
+                        <p style="font-size: 14px; color: #7f8c8d;">A receipt has been sent to your email.</p>
+                        <a href="/" style="display: inline-block; background: #92BC13; color: white; padding: 12px 35px; text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; margin-top: 10px;">Return to Home</a>
+                    </div>
                 </div>
             """)
+
         else:
+            # Handle Payment Failure
             payment.status = "Failed"
             payment.save()
+            
             FailedPayment.objects.create(
                 transaction_id=payment.transaction_id,
                 first_name=payment.first_name,
                 amount=payment.amount
             )
-            return HttpResponse("""
-                <div style="text-align:center; padding:50px; font-family:Arial;">
-                    <h1 style="color:red;">Payment Failed</h1>
-                    <p>Please try again or contact support if the issue persists.</p>
-                    <a href="/" style="background:#dc3545; color:white; padding:10px 20px; text-decoration:none; border-radius:5px;">Try Again</a>
+            
+            # --- PROFESSIONAL FAILURE UI ---
+            return HttpResponse(f"""
+                <div style="font-family: Arial, sans-serif; background-color: #f4f7f6; height: 100vh; display: flex; align-items: center; justify-content: center; margin: 0;">
+                    <div style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; max-width: 400px; width: 90%;">
+                        <div style="width: 70px; height: 70px; background: #e74c3c; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 35px;">✕</div>
+                        <h1 style="color: #c0392b; margin-bottom: 10px;">Payment Failed</h1>
+                        <p style="color: #7f8c8d;">We were unable to process your donation. Please try again or contact our support.</p>
+                        <a href="/" style="display: inline-block; background: #e74c3c; color: white; padding: 12px 35px; text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: 10px;">Try Again</a>
+                    </div>
                 </div>
             """)
 
     except Payment.DoesNotExist:
-        # This triggers the error you've been seeing
-        return HttpResponse(f"Payment ID {transaction_id} not found in our records.", status=404)
+        logger.error(f"Payment ID {transaction_id} not found in database.")
+        return HttpResponse(f"Payment ID {transaction_id} not found.", status=404)
     except Exception as e:
         logger.exception("Callback error")
         return HttpResponse("An internal error occurred.", status=500)
