@@ -4,8 +4,8 @@ from decimal import Decimal
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
-from django.core.mail import EmailMultiAlternatives
-from .models import Payment, FailedPayment
+from django.core.mail import EmailMultiAlternatives, send_mail  # ADDED send_mail
+from .models import Payment, FailedPayment, ContactMessage      # ADDED ContactMessage
 # stop from changing amount
 from .crypto_utils import encrypt_payment
 from django.utils import timezone
@@ -19,7 +19,7 @@ def send_thank_you_email(payment):
     date_str = now.strftime('%d/%m/%Y')
     time_str = now.strftime('%H:%M')
     timestamp = now.strftime('%Y%m%d%H%M')
-    
+
     # Format: CBF-FirstNameLastName-Timestamp
     full_name_no_spaces = f"{payment.first_name}{payment.last_name}".replace(" ", "")
     ref_no = f"CBF-{full_name_no_spaces}-{timestamp}"
@@ -32,17 +32,18 @@ def send_thank_you_email(payment):
     text_content = f"""
 Dear Sir/Madam {payment.first_name} {payment.last_name},
 
-Thank you for your valuable donation. 
+Thank you for your valuable donation.
 Your support helps us serve better and reach more people.
 
 YOUR DONATION DETAILS
 Reference Number: {ref_no}
 Name: {payment.first_name} {payment.last_name}
-Address: {payment.address_line_one}
+Donation Option: {payment.donation_option}
+Donated To: {payment.donate_to}
 Country: {payment.country}
 Email: {payment.email}
 Date | Time: {date_str} | {time_str}
-Amount Donated: LKR {payment.amount}
+Amount Donated: USD {payment.amount}
 
 May Allah reward you and your family.
 
@@ -60,22 +61,22 @@ https://baithulmal.lk/
           </h2>
           <p>Dear Sir/Madam <strong>{payment.first_name} {payment.last_name}</strong>,</p>
           <p>Thank you for your valuable donation. Your support helps us serve better and reach more people.</p>
-          
+
           <div style="background: #f9f9f9; padding: 15px; border-radius: 5px; margin: 20px 0;">
             <h3 style="margin-top: 0; font-size: 16px; color: #27ae60;">YOUR DONATION DETAILS</h3>
             <table style="width: 100%; font-size: 14px;">
               <tr><td><strong>Ref No:</strong></td><td>{ref_no}</td></tr>
               <tr><td><strong>Name:</strong></td><td>{payment.first_name} {payment.last_name}</td></tr>
-              <tr><td><strong>Address:</strong></td><td>{payment.address_line_one}</td></tr>
+              <tr><td><strong>Donation Type:</strong></td><td>{payment.donation_option}</td></tr>
+              <tr><td><strong>Appeal:</strong></td><td>{payment.donate_to}</td></tr>
               <tr><td><strong>Country:</strong></td><td>{payment.country}</td></tr>
-              <tr><td><strong>Email:</strong></td><td>{payment.email}</td></tr>
               <tr><td><strong>Date | Time:</strong></td><td>{date_str} | {time_str}</td></tr>
-              <tr><td><strong>Amount:</strong></td><td><strong>LKR {payment.amount:.2f}</strong></td></tr>
+              <tr><td><strong>Amount:</strong></td><td><strong style="color: #27ae60;">USD {payment.amount:.2f}</strong></td></tr>
             </table>
           </div>
 
           <p><i>May Allah reward you and your family.</i></p>
-          
+
           <hr style="border: 0; border-top: 1px solid #eee;" />
           <p style="font-size: 12px; color: #777;">
             <strong>Ceylon Baithulmal Fund</strong><br>
@@ -100,13 +101,19 @@ def create_payment(request):
 
     try:
         # Get and validate amount
+        # Get primary amount (fixed value or "other")
         amount_str = request.POST.get("amount", "").strip()
+        
+        # If "other" is selected, grab the value from the numeric box
+        if amount_str.lower() == "other":
+            amount_str = request.POST.get("other_amount", "").strip()
+
         try:
             amount = Decimal(amount_str)
             if amount <= 0:
-                return JsonResponse({"error": "Invalid amount"}, status=400)
-        except:
-            return JsonResponse({"error": "Invalid amount"}, status=400)
+                return JsonResponse({"error": "Amount must be greater than 0"}, status=400)
+        except (ValueError, TypeError, Exception):
+            return JsonResponse({"error": "Please enter a valid numeric amount"}, status=400)
 
         # Create Payment record
         payment = Payment.objects.create(
@@ -120,6 +127,8 @@ def create_payment(request):
             state=request.POST.get("state", "").strip(),
             postal_code=request.POST.get("postal_code", "").strip(),
             country=request.POST.get("country", "").strip(),
+            donation_option=request.POST.get("donation_option", "").strip(), # ADD THIS
+            donate_to=request.POST.get("donate_to", "").strip(),             # ADD THIS
             amount=amount,
             message=request.POST.get("message", "").strip(),
             status="Pending",
@@ -257,3 +266,58 @@ def payment_callback(request):
     except Exception as e:
         logger.exception("Callback error")
         return HttpResponse("An internal error occurred.", status=500)
+
+
+@csrf_exempt
+def contact_us_view(request):
+    if request.method == "POST":
+        try:
+            name = request.POST.get("name", "").strip()
+            email = request.POST.get("email", "").strip()
+            phone = request.POST.get("phone", "").strip()
+            message = request.POST.get("message", "").strip()
+
+            # 1. Save to Database
+            ContactMessage.objects.create(name=name, email=email, phone=phone, message=message)
+
+            # 2. Build HTML Email Body
+            html_body = f"""
+            <html>
+                <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+                    <div style="max-width: 600px; margin: auto; border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden;">
+                        <div style="background-color: #92BC13; color: white; padding: 20px; text-align: center;">
+                            <h1 style="margin: 0;">New Website Inquiry</h1>
+                        </div>
+                        <div style="padding: 20px;">
+                            <p><strong>From:</strong> {name}</p>
+                            <p><strong>Email:</strong> {email}</p>
+                            <p><strong>Phone:</strong> {phone}</p>
+                            <hr style="border: 0; border-top: 1px solid #eee;">
+                            <p><strong>Message:</strong></p>
+                            <div style="background: #f9f9f9; padding: 15px; border-radius: 5px; border-left: 5px solid #92BC13;">
+                                {message}
+                            </div>
+                        </div>
+                        <div style="background: #f1f1f1; padding: 10px; text-align: center; font-size: 12px; color: #777;">
+                            This message was sent from the Ceylon Baithulmal Fund website contact form.
+                        </div>
+                    </div>
+                </body>
+            </html>
+            """
+
+            # 3. Send the HTML Email
+            from django.core.mail import EmailMessage
+            email_msg = EmailMessage(
+                subject=f"Inquiry from {name}",
+                body=html_body,
+                from_email=settings.EMAIL_HOST_USER,
+                to=['pathushi.m@gmail.com'],
+            )
+            email_msg.content_subtype = "html"  # Critical: Set to HTML
+            email_msg.send()
+
+            return JsonResponse({"status": "success"})
+        except Exception as e:
+            return JsonResponse({"status": "error", "message": str(e)}, status=500)
+    return JsonResponse({"status": "error", "message": "Method not allowed"}, status=405)
